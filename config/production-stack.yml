@@ -4,7 +4,8 @@ volumes:
     PDSC_DEVELOPMENT_DB_VOLUME:
         driver: local
 
-networks: pdscnet
+networks:
+    pdscnet:
 
 services:
     web:
