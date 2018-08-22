@@ -19,6 +19,8 @@ services:
                     memory: 256M
         ports:
             - "80:80"
+        volumes:
+            - /srv/website:/var/www/html
         networks:
             - pdscnet
 
@@ -45,7 +47,7 @@ services:
                 limits:
                     memory: 512M
         volumes:
-            - /srv/data/olac-datasource:/srv/data
+            - /srv/api:/srv/data
         command: ["pm2-runtime", "start", "ecosystem.config.js"]
         networks:
             - pdscnet
