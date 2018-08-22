@@ -1,0 +1,3 @@
+#!/bin/bash
+
+docker stack deploy -c ../config/production-stack.yml pdsc-webstack
