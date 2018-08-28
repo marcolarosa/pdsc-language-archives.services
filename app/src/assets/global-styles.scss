@@ -1,0 +1,12 @@
+@import './variables.scss';
+
+body {
+    background-color: $background-color;
+    height: 100vh;
+    margin: 0;
+    width: 100vw;
+}
+
+.disable-pointer-events {
+    pointer-events: none;
+}
