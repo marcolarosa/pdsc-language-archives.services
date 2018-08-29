@@ -44,17 +44,17 @@ export default {
                 {
                     id: 1,
                     name: "Nabu",
-                    image: "src/assets/nabu.jpg"
+                    image: "src/assets/images/nabu.jpg"
                 },
                 {
                     id: 2,
                     name: "OLAC Data Visualisation",
-                    image: "src/assets/olacvis.jpg"
+                    image: "src/assets/images/olacvis.jpg"
                 },
                 {
                     id: 3,
                     name: "OLAC Data Service",
-                    image: "src/assets/olacdata.jpg"
+                    image: "src/assets/images/olacdata.jpg"
                 }
             ]
         };

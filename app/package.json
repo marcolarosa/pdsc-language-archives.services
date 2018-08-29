@@ -5,7 +5,8 @@
     "main": "index.js",
     "scripts": {
         "develop": "node_modules/.bin/webpack-serve --config webpack.develop.js",
-        "unitTests": "node_modules/mocha/bin/mocha -w -r jsdom-global/register 'src/**/*.spec.js'"
+        "unitTests": "node_modules/mocha/bin/mocha -w -r jsdom-global/register 'src/**/*.spec.js'",
+        "build:production": "node_modules/.bin/webpack --config webpack.build-production.js"
     },
     "author": "Marco La Rosa",
     "license": "ISC",
@@ -18,6 +19,7 @@
         "chai": "^4.1.2",
         "clean-webpack-plugin": "^0.1.19",
         "connect-history-api-fallback": "^1.5.0",
+        "copy-webpack-plugin": "^4.5.2",
         "css-loader": "^1.0.0",
         "file-loader": "^2.0.0",
         "html-webpack-plugin": "^3.2.0",
@@ -27,6 +29,7 @@
         "node-sass": "^4.9.3",
         "raw-loader": "^0.5.1",
         "sass-loader": "^7.1.0",
+        "url-loader": "^1.1.1",
         "vue-loader": "^15.4.1",
         "vue-template-compiler": "^2.5.17",
         "webpack": "^4.17.1",

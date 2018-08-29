@@ -1,7 +1,7 @@
 <template>
     <div class="row pad-header">
         <div class="col">
-            <img src="src/assets/coedl-logo.png" class="style-logo">
+            <img src="src/assets/images/coedl-logo.png" class="style-logo">
         </div>
         <div class="col style-name">
             <h1 class="float-right">Labs</h1>
