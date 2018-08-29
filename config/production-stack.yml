@@ -21,6 +21,7 @@ services:
             - "80:80"
         volumes:
             - /srv/website:/var/www/html
+            - /srv/olacvis:/var/www/olacvis
         networks:
             - pdscnet
 
