@@ -1,5 +1,4 @@
-@import './variables.scss';
-
+@import "./variables.scss";
 body {
     background-color: $background-color;
     height: 100vh;
@@ -9,4 +8,22 @@ body {
 
 .disable-pointer-events {
     pointer-events: none;
+}
+
+p {
+    font-size: 1.2em;
+    text-align: justify;
+}
+
+a:link,
+a:visited {
+    text-decoration: none;
+    color: $link-color;
+    font-style: italic;
+    font-size: 1.25em;
+}
+
+a:hover,
+a:active {
+    text-decoration: underline;
 }

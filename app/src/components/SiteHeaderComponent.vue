@@ -1,5 +1,5 @@
 <template>
-    <div class="row">
+    <div class="row pad-header">
         <div class="col">
             <img src="src/assets/coedl-logo.png" class="style-logo">
         </div>
@@ -13,6 +13,11 @@
 </script>
 
 <style lang="scss" scoped>
+.pad-header {
+    margin: 50px;
+    border-bottom: 1px solid #ccc;
+}
+
 .style-logo {
     max-width: 100%;
 }
