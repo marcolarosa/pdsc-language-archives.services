@@ -1,28 +1,36 @@
 <template>
     <div class="row pad-header">
-        <div class="col">
             <img src="src/assets/images/coedl-logo.png" class="style-logo">
-        </div>
-        <div class="col style-name">
-            <h1 class="float-right">Labs</h1>
-        </div>
+            <div class="style-heading float-right">labs</div>
     </div>
 </template>
 
 <script>
+export default {
+    props: {
+        banner: Boolean
+    },
+    data() {
+        return {};
+    }
+};
 </script>
 
 <style lang="scss" scoped>
 .pad-header {
-    margin: 50px;
+    margin: 50px 0px;
+    padding: 20px 0px;
     border-bottom: 1px solid #ccc;
 }
 
 .style-logo {
-    max-width: 100%;
+    min-width: 500px;
+    max-width: 500px;
 }
 
-.style-name {
-    padding: 22px;
+.style-heading {
+    line-height: 100px;
+    font-size: 3.5em;
+    margin-left: 20px;
 }
 </style>

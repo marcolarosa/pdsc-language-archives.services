@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="container-fluid">
+        <div class="container">
             <site-header-component></site-header-component>
             <site-overview-component></site-overview-component>
         </div>
