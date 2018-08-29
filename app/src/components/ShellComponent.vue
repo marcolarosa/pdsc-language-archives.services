@@ -1,11 +1,19 @@
 <template>
-    <div>shell</div>
+    <div>
+        <div class="container-fluid">
+            <site-header-component></site-header-component>
+        </div>
+    </div>
 </template>
 
 <script>
+import SiteHeaderComponent from "./SiteHeaderComponent.vue";
 export default {
     data() {
         return {};
+    },
+    components: {
+        SiteHeaderComponent
     }
 };
 </script>
