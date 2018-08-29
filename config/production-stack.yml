@@ -22,6 +22,7 @@ services:
         volumes:
             - /srv/website:/var/www/html
             - /srv/olacvis:/var/www/olacvis
+            - /srv/downloads:/var/www/downloads
         networks:
             - pdscnet
 
