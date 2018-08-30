@@ -2,21 +2,20 @@
     <div>
         <div class="container">
             <site-header-component></site-header-component>
-            <site-overview-component></site-overview-component>
+            <router-view></router-view>
         </div>
     </div>
 </template>
 
 <script>
 import SiteHeaderComponent from "./SiteHeaderComponent.vue";
-import SiteOverviewComponent from "./SiteOverviewComponent.vue";
+
 export default {
     data() {
         return {};
     },
     components: {
-        SiteHeaderComponent,
-        SiteOverviewComponent
+        SiteHeaderComponent
     }
 };
 </script>

@@ -25,8 +25,10 @@
                 <div>
                     <el-carousel :interval="4000" type="card" height="340px">
                         <el-carousel-item v-for="item in items" :key="item.id">
-                            <h4>{{ item.name }}</h4>
-                            <img :src="item.image" class="style-image mx-auto d-block">
+                            <router-link :to="item.uri">
+                                <h4>{{ item.name }}</h4>
+                                <img :src="item.image" class="style-image mx-auto d-block">
+                            </router-link>
                         </el-carousel-item>
                     </el-carousel>
                 </div>
@@ -44,17 +46,20 @@ export default {
                 {
                     id: 1,
                     name: "Nabu",
-                    image: "src/assets/images/nabu.jpg"
+                    image: "src/assets/images/nabu.jpg",
+                    uri: "/about/nabu"
                 },
                 {
                     id: 2,
                     name: "OLAC Data Visualisation",
-                    image: "src/assets/images/olacvis.jpg"
+                    image: "src/assets/images/olacvis.jpg",
+                    uri: "/about/olacVis"
                 },
                 {
                     id: 3,
                     name: "OLAC Data Service",
-                    image: "src/assets/images/olacdata.jpg"
+                    image: "src/assets/images/olacdata.jpg",
+                    uri: "/about/olacService"
                 }
             ]
         };

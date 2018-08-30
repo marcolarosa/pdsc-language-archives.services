@@ -1,7 +1,9 @@
 <template>
     <div class="row pad-header">
+        <router-link to="/">
             <img src="src/assets/images/coedl-logo.png" class="style-logo">
-            <div class="style-heading float-right">labs</div>
+        </router-link>
+        <div class="style-heading float-right">labs</div>
     </div>
 </template>
 
