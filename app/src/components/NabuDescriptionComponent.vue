@@ -1,7 +1,7 @@
 <template>
         <el-card class="box-card style-card" shadow="never">
             <div slot="header" class="clearfix">
-                <h4>Nabu - the paradisec catalog</h4>
+                <h4>Nabu - the <a href="http://www.paradisec.org.au">PARADISEC</a> catalog</h4>
             </div>
             <p>
             Nabu is a digital media item management system that provides a catalog of audio and video items, metadata for these items, and information about the workflow status of the items.   
@@ -25,14 +25,6 @@
 </template>
 
 <script>
-import SiteHeaderComponent from "./SiteHeaderComponent.vue";
-import NabuDescriptionComponent from "./NabuDescriptionComponent.vue";
-
-export default {
-    components: {
-        NabuDescriptionComponent
-    }
-};
 </script>
 
 <style lang="scss" scoped>
