@@ -32,6 +32,7 @@
                         </el-carousel-item>
                     </el-carousel>
                 </div>
+                <div class="text-center"><em>(click the tiles to see more information)</em></div>
             </div>
         </div>
 
