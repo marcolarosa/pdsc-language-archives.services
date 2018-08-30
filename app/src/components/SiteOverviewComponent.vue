@@ -71,7 +71,7 @@ export default {
                     id: 3,
                     name: "Language Archives Data Service",
                     image: "src/assets/images/olacdata.jpg",
-                    uri: "/about/olac-service"
+                    uri: "/about/data-service"
                 },
                 {
                     id: 4,

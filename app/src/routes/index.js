@@ -18,6 +18,8 @@ const AngularOlacVisComponent = () =>
     import(/* webpackChunkName: "group-apps" */ "components/AngularOlacVisComponent.vue");
 const DataLoaderDescriptionComponent = () =>
     import(/* webpackChunkName: "group-apps" */ "components/DataLoaderDescriptionComponent.vue");
+const DataServiceDescriptionComponent = () =>
+    import(/* webpackChunkName: "group-apps" */ "components/DataServiceDescriptionComponent.vue");
 
 export const router = new VueRouter({
     mode: "history",
@@ -33,6 +35,10 @@ export const router = new VueRouter({
                 {
                     path: "/about/data-loader",
                     component: DataLoaderDescriptionComponent
+                },
+                {
+                    path: "/about/data-service",
+                    component: DataServiceDescriptionComponent
                 }
             ]
         }
