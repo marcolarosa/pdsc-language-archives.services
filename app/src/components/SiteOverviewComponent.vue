@@ -35,7 +35,18 @@
                 <div class="text-center"><em>(click the tiles to see more information)</em></div>
             </div>
         </div>
-
+        <div class="row pad-funding-note">
+            <div class="col">
+                <p class='text-center'>
+                    <em>
+                        <strong>
+                            The projects shown in this site have been funded as part of the<br/>
+                            Centre of Excellence for the Dynamics of Language (ARC grant CE140100041). 
+                        </strong>
+                    </em>
+                </p>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -76,6 +87,11 @@ export default {
 
 <style lang="scss" scoped>
 @import "assets/variables.scss";
+.pad-funding-note {
+    border-top: 1px solid #ccc;
+    margin-top: 50px;
+}
+
 .style-image {
     height: 300px;
 }
