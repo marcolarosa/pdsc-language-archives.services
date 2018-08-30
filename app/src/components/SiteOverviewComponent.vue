@@ -60,6 +60,12 @@ export default {
                     name: "OLAC Data Service",
                     image: "src/assets/images/olacdata.jpg",
                     uri: "/about/olac-service"
+                },
+                {
+                    id: 4,
+                    name: "Data Loader",
+                    image: "src/assets/images/dataloader.jpg",
+                    uri: "/about/data-loader"
                 }
             ]
         };

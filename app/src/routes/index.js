@@ -16,6 +16,8 @@ const NabuDescriptionComponent = () =>
     import(/* webpackChunkName: "group-apps" */ "components/NabuDescriptionComponent.vue");
 const AngularOlacVisComponent = () =>
     import(/* webpackChunkName: "group-apps" */ "components/AngularOlacVisComponent.vue");
+const DataLoaderDescriptionComponent = () =>
+    import(/* webpackChunkName: "group-apps" */ "components/DataLoaderDescriptionComponent.vue");
 
 export const router = new VueRouter({
     mode: "history",
@@ -27,7 +29,11 @@ export const router = new VueRouter({
             children: [
                 { path: "/", component: SiteOverviewComponent },
                 { path: "/about/nabu", component: NabuDescriptionComponent },
-                { path: "/about/olac-vis", component: AngularOlacVisComponent }
+                { path: "/about/olac-vis", component: AngularOlacVisComponent },
+                {
+                    path: "/about/data-loader",
+                    component: DataLoaderDescriptionComponent
+                }
             ]
         }
     ]
