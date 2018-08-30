@@ -41,7 +41,7 @@
                     <em>
                         <strong>
                             The projects shown in this site have been funded as part of the<br/>
-                            Centre of Excellence for the Dynamics of Language (ARC grant CE140100041). 
+                            ARC Centre of Excellence for the Dynamics of Language (ARC grant CE140100041). 
                         </strong>
                     </em>
                 </p>
