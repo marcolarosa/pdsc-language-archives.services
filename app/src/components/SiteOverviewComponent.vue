@@ -53,13 +53,13 @@ export default {
                     id: 2,
                     name: "OLAC Data Visualisation",
                     image: "src/assets/images/olacvis.jpg",
-                    uri: "/about/olacVis"
+                    uri: "/about/olac-vis"
                 },
                 {
                     id: 3,
                     name: "OLAC Data Service",
                     image: "src/assets/images/olacdata.jpg",
-                    uri: "/about/olacService"
+                    uri: "/about/olac-service"
                 }
             ]
         };
