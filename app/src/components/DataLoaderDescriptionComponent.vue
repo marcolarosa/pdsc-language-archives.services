@@ -12,7 +12,8 @@
                 The aim of this project was to develop a cross platform GUI application that could be used to load data onto
                 a library box for repatriation to indiginous communities. When installing data onto a LibraryBox the application
                 loads an instance of the Nabu Catalog Viewer, configured to operate in a totally standalone mode.
-
+            </p>
+            <p>
                 As the researchers often deliver content and materials on portable disks, a subsequent development added the ability
                 to install a limited version of the viewer for use as a local browser to the available content. This viewer operates
                 on external devices without the need of a webserver or other system technology.
