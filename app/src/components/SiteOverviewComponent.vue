@@ -26,7 +26,7 @@
                     <el-carousel :interval="4000" type="card" height="340px">
                         <el-carousel-item v-for="item in items" :key="item.id">
                             <router-link :to="item.uri">
-                                <h4>{{ item.name }}</h4>
+                                <h5>{{ item.name }}</h5>
                                 <img :src="item.image" class="style-image mx-auto d-block">
                             </router-link>
                         </el-carousel-item>
@@ -63,13 +63,13 @@ export default {
                 },
                 {
                     id: 2,
-                    name: "OLAC Data Visualisation",
+                    name: "Language Archives Data Visualisation",
                     image: "src/assets/images/olacvis.jpg",
                     uri: "/about/olac-vis"
                 },
                 {
                     id: 3,
-                    name: "OLAC Data Service",
+                    name: "Language Archives Data Service",
                     image: "src/assets/images/olacdata.jpg",
                     uri: "/about/olac-service"
                 },
@@ -96,9 +96,8 @@ export default {
     height: 300px;
 }
 
-.el-carousel__item h4 {
+.el-carousel__item h5 {
     color: $link-color;
-    font-size: 1.4em;
     opacity: 0.75;
     margin: 0;
     padding: 10px;
