@@ -10,7 +10,7 @@
         </p>
         <p>
             The aim of this project was to develop a cross platform GUI application that could be used to load data onto
-            a library box for repatriation to indiginous communities. When installing data onto a LibraryBox the application
+            a library box for repatriation to indigenous communities. When installing data onto a LibraryBox the application
             loads an instance of the Nabu Catalog Viewer, configured to operate in a totally standalone mode.
         </p>
         <p>

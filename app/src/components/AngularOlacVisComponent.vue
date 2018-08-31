@@ -12,7 +12,7 @@
         </p>
         <p>
             This project was a first attempt at answering the question: Can we simplify the discovery of those
-            languages that do not have manuy resources?
+            languages that do not have many resources?
         </p>
         <p>
             - Use the application @ <a href="http://language-archives.services/olacvis/" target="_blank">http://language-archives.services/olacvis/</a><br/>
