@@ -41,7 +41,7 @@
                     <em>
                         <strong>
                             The projects shown in this site are led by <a href="http://nthieberger.net" target="_blank">Nick Thieberger</a> and 
-                            have been funded as part of the
+                            have been funded as part of the<br/>
                             ARC Centre of Excellence for the Dynamics of Language (ARC grant CE140100041). 
                         </strong>
                     </em>
