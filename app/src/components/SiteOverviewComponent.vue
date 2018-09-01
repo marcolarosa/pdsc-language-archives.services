@@ -64,18 +64,24 @@ export default {
                 },
                 {
                     id: 2,
+                    name: "Nabu Collection Viewer",
+                    image: "src/assets/images/viewer.jpg",
+                    uri: "/about/nabu-viewer"
+                },
+                {
+                    id: 3,
                     name: "Language Archives Data Visualisation",
                     image: "src/assets/images/olacvis.jpg",
                     uri: "/about/olac-vis"
                 },
                 {
-                    id: 3,
+                    id: 4,
                     name: "Language Archives Data Service",
                     image: "src/assets/images/olacdata.jpg",
                     uri: "/about/data-service"
                 },
                 {
-                    id: 4,
+                    id: 5,
                     name: "Data Loader",
                     image: "src/assets/images/dataloader.jpg",
                     uri: "/about/data-loader"

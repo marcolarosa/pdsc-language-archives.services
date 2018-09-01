@@ -14,6 +14,8 @@ const SiteOverviewComponent = () =>
 
 const NabuDescriptionComponent = () =>
     import(/* webpackChunkName: "group-apps" */ "components/NabuDescriptionComponent.vue");
+const NabuCollectionViewerDescriptionComponent = () =>
+    import(/* webpackChunkName: "group-apps" */ "components/NabuCollectionViewerDescriptionComponent.vue");
 const AngularOlacVisComponent = () =>
     import(/* webpackChunkName: "group-apps" */ "components/AngularOlacVisComponent.vue");
 const DataLoaderDescriptionComponent = () =>
@@ -31,6 +33,10 @@ export const router = new VueRouter({
             children: [
                 { path: "/", component: SiteOverviewComponent },
                 { path: "/about/nabu", component: NabuDescriptionComponent },
+                {
+                    path: "/about/nabu-viewer",
+                    component: NabuCollectionViewerDescriptionComponent
+                },
                 { path: "/about/olac-vis", component: AngularOlacVisComponent },
                 {
                     path: "/about/data-loader",
