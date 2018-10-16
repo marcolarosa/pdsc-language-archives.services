@@ -5,7 +5,7 @@ volumes:
         driver: local
 
 networks:
-    - pdscnet:
+    pdscnet:
 
 services:
     web:
