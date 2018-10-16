@@ -15,4 +15,4 @@ docker service create \
     --name language-scraper \
     --restart-condition on-failure \
     pdsc/api-tools-production \
-    bash -c "python3 ./scraper.py --output-folder /srv/data/scrape --info"
+    bash -c "python3 ./scraper.py --output-folder /srv/data/scrape --info > /srv/data/last-scrape.log 2>&1"
