@@ -5,15 +5,21 @@ if [ "$(whoami)" != 'root' ] ; then
     exit -1
 fi
 
+if [ "$#" != "1" ] ; then
+    echo "Pass one argument - the name of a data scrape in the scrape folder. Exiting."
+    exit -1 
+fi 
+
+
 . /root/.stack-secrets
 
 docker service create \
     --network pdsc-webstack_pdscnet \
     -e PDSC_ADMIN_PASSWORD=${ADMIN_PASSWORD} \
     --mount type=bind,source=/srv/api,destination=/srv/data \
-    --name language-scraper \
+    --name language-reprocess \
     --restart-condition on-failure \
     pdsc/api-tools-production \
-    bash -c "python3 ./scraper.py --output-folder /srv/data/scrape --info"
+    bash -c "python3 ./reprocess.py --data /srv/data/scrape/${1} --info"
 
-docker service rm language-scraper
+docker service rm language-process
