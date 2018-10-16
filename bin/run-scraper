@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [ "$(whoami)" != 'root' ] ; then
+    echo "Run me as root please. Exiting."
+    exit -1
+fi
+
+. /root/.stack-secrets
+
+docker service create \
+    --network pdsc-webstack_pdscnet \
+    -e PDSC_ADMIN_PASSWORD=${ADMIN_PASSWORD} \
+    --mount type=bind,source=/srv/api,destination=/srv/data \
+    pdsc/api-tools-production \
+    bash -c "python3 ./scraper.py --output-folder /srv/data/scrape --info"
