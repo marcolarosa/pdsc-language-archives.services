@@ -18,9 +18,10 @@ This is the base website and associated docker container code and stack configur
 ## Helper scripts
 
 There are 3 helpers in the `bin` folder:
- * build: will build / rebuild the container
- * start-stack: starts the stack (more informaion `Deploying the stack`)
- * stop-stack: stops the stack (more information in `Removing the stack`)
+
+-   build: will build / rebuild the container
+-   start-stack: starts the stack (more informaion `Deploying the stack`)
+-   stop-stack: stops the stack (more information in `Removing the stack`)
 
 ### Deploying the stack
 
