@@ -1,3 +1,16 @@
 #!/bin/bash
 
+if [ "$(whoami)" != 'root' ] ; then
+    echo "Run me as root please. Exiting."
+    exit -1
+fi
+
+read -p 'POSTGRES_PASSWORD? ' POSTGRES_PASSWORD
+read -p 'API ADMIN_PASWORD? ' ADMIN_PASSWD 
+
+export POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+export ADMIN_PASSWORD=${ADMIN_PASSWD}
+echo "POSTGRES_PASSWORD=$POSTGRES_PASSWORD" > /root/.stack-secrets
+echo "ADMIN_PASSWORD=$ADMIN_PASSWORD" >> /root/.stack-secrets
+
 docker stack deploy -c ../config/production-stack.yml pdsc-webstack
