@@ -11,5 +11,7 @@ docker service create \
     --network pdsc-webstack_pdscnet \
     -e PDSC_ADMIN_PASSWORD=${ADMIN_PASSWORD} \
     --mount type=bind,source=/srv/api,destination=/srv/data \
+    --name language-scraper \
+    --restart-condition on-failure \
     pdsc/api-tools-production \
     bash -c "python3 ./scraper.py --output-folder /srv/data/scrape --info"
