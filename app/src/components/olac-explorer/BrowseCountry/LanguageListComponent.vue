@@ -3,6 +3,7 @@
         <div class="row my-2">
             <div class="col">
                 <language-list-table-component />
+                <p v-if="!country">Please select a country from the dropdown.</p>
             </div>
         </div>
         <div class="row my-2">
@@ -27,6 +28,11 @@ export default {
     },
     data() {
         return {};
+    },
+    computed: {
+        ...mapState({
+            country: state => state.explorerStore.selected.country
+        })
     }
 };
 </script>

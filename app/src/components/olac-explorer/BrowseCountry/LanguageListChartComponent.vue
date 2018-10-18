@@ -1,6 +1,6 @@
 <template>
     <div>
-        <el-card class="box-card">
+        <el-card class="box-card" v-if="country">
             <div ref="chart"></div>
         </el-card>
     </div>
