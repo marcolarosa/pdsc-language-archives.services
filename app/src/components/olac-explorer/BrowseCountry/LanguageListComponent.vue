@@ -2,12 +2,12 @@
     <div>
         <div class="row my-2">
             <div class="col">
-                <olac-explorer-language-list-table-component />
+                <language-list-table-component />
             </div>
         </div>
         <div class="row my-2">
             <div class="col">
-                <olac-explorer-language-list-chart-component />
+                <language-list-chart-component />
             </div>
         </div>
     </div>
@@ -17,13 +17,13 @@
 import { mapState } from "vuex";
 import { compact } from "lodash";
 import ApexCharts from "apexcharts";
-import OlacExplorerLanguageListTableComponent from "./OlacExplorerLanguageListTableComponent.vue";
-import OlacExplorerLanguageListChartComponent from "./OlacExplorerLanguageListChartComponent.vue";
+import LanguageListTableComponent from "./LanguageListTableComponent.vue";
+import LanguageListChartComponent from "./LanguageListChartComponent.vue";
 
 export default {
     components: {
-        OlacExplorerLanguageListTableComponent,
-        OlacExplorerLanguageListChartComponent
+        LanguageListTableComponent,
+        LanguageListChartComponent
     },
     data() {
         return {};

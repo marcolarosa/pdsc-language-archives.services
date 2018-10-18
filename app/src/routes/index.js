@@ -23,8 +23,10 @@ const DataLoaderDescriptionComponent = () =>
 const DataServiceDescriptionComponent = () =>
     import(/* webpackChunkName: "group-apps" */ "components/about/DataServiceDescriptionComponent.vue");
 
-const OlacExplorerComponent = () =>
-    import(/* webpackChunkName: "group-explore" */ "components/olac-explorer/OlacExplorerComponent.vue");
+const ExplorerComponent = () =>
+    import(/* webpackChunkName: "group-explore" */ "components/olac-explorer/ExplorerComponent.vue");
+const ExplorerBrowseCountryComponent = () =>
+    import(/* webpackChunkName: "group-explore" */ "components/olac-explorer/BrowseCountry/BrowseCountryComponent.vue");
 
 export const router = new VueRouter({
     mode: "history",
@@ -53,7 +55,13 @@ export const router = new VueRouter({
         },
         {
             path: "/olac-explorer",
-            component: OlacExplorerComponent
+            component: ExplorerComponent,
+            children: [
+                {
+                    path: "browse-country",
+                    component: ExplorerBrowseCountryComponent
+                }
+            ]
         }
     ]
 });
