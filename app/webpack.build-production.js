@@ -43,7 +43,7 @@ module.exports = {
             [
                 {
                     from: "src/assets/images",
-                    to: "src/assets/images"
+                    to: "assets/images"
                 }
             ],
             {}
@@ -70,7 +70,7 @@ module.exports = {
                 use: ["vue-style-loader", "css-loader", "sass-loader"]
             },
             {
-                test: /\.(woff|woff2|ttf|eot|svg)(\?]?.*)?$/,
+                test: /\.(woff|woff2|ttf|eot|svg|png|jp(e*)g|gif)?$/,
                 loader: "file-loader?name=res/[name].[ext]?[hash]"
             }
         ]

@@ -5,7 +5,10 @@ import axios from "axios";
 class HTTPService {
     constructor() {
         this.http = axios.create({
-            baseURL: "http://localhost:3000"
+            baseURL:
+                process.env.NODE_ENV === "development"
+                    ? "http://localhost:3000"
+                    : "http://www.language-archives.services/api/"
         });
     }
 }

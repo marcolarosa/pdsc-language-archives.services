@@ -3,6 +3,7 @@
 
 # build the website container 
 cd ../app && npm run build:production
+\sudo rsync -av --delete ./dist/ /srv/website/
 cd -
 
 docker build --rm=true --tag "pdsc/website" ../docker/website 
