@@ -143,7 +143,7 @@ export default {
                     id: 3,
                     name: "Language Archives Explorer",
                     image: "assets/images/olac-explorer.png",
-                    uri: "/olac-explorer"
+                    uri: "/olac-explorer/browse-country"
                 },
                 {
                     id: 4,
