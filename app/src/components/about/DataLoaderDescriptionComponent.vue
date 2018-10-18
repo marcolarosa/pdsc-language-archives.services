@@ -19,20 +19,20 @@
             on external devices without the need of a webserver or other system technology.
         </p>
         <p>
-            - Download the MacOS version of the application from 
-                <a href="http://www.language-archives.services/downloads/paradisec-data-loader.zip" target="_blank">here</a><br/>
+            - Download the MacOS version of the application from
+            <a href="http://www.language-archives.services/downloads/paradisec-data-loader.zip" target="_blank">here</a><br />
             - The source code is accessible @ <a href="https://github.com/marcolarosa/pdsc-librarybox-installer" target="_blank">https://github.com/marcolarosa/pdsc-librarybox-installer</a>
         </p>
         <div class="outer ">
-            <img src="src/assets/images/dataloader.jpg" class="style-image position-image1">
-            <img src="src/assets/images/dataloader1.jpg" class="style-image position-image2">
-            <img src="src/assets/images/dataloader2.jpg" class="style-image position-image3">
+            <img src="assets/images/dataloader.jpg" class="style-image position-image1">
+            <img src="assets/images/dataloader1.jpg" class="style-image position-image2">
+            <img src="assets/images/dataloader2.jpg" class="style-image position-image3">
         </div>
     </el-card>
 </template>
 
 <script>
-import SiteHeaderComponent from "./SiteHeaderComponent.vue";
+import SiteHeaderComponent from "src/components/SiteHeaderComponent.vue";
 import NabuDescriptionComponent from "./NabuDescriptionComponent.vue";
 
 export default {

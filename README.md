@@ -3,16 +3,25 @@
 This is the base website and associated docker container code and stack configuration
 
 - [language-archives.services](#language-archivesservices)
-    - [Building the container](#building-the-container)
+    - [Developing the website](#developing-the-website)
+    - [Building the website container](#building-the-website-container)
     - [Helper scripts](#helper-scripts)
-        - [Deploying the stack](#deploying-the-stack)
-        - [Removing the stack](#removing-the-stack)
+        - [Setting up the swarm](#setting-up-the-swarm)
 
-## Building the container
+## Developing the website
 
 ```
-> cd docker/website
-> docker build --rm=true --tag "pdsc/website" .
+> cd app
+> docker-compose up
+```
+
+Load http://localhost:9000 in your browser.
+
+## Building the website container
+
+```
+> cd bin
+> ./build
 ```
 
 ## Helper scripts
@@ -23,7 +32,7 @@ There are 3 helpers in the `bin` folder:
 -   start-stack: starts the stack (more informaion `Deploying the stack`)
 -   stop-stack: stops the stack (more information in `Removing the stack`)
 
-### Deploying the stack
+### Setting up the swarm
 
 Docker compose can deploy the stack to a swarm. In this case the swarm is the language-archives.services node. To deploy the stack the swarm first needs to be initialised (this only needs to be done once), viz:
 
@@ -33,17 +42,3 @@ Docker compose can deploy the stack to a swarm. In this case the swarm is the la
 ```
 
 This will initialise the swarm and join the current node as a manager. After that, `docker stack ls` should show an empty swarm.
-
-Then, to deploy the stack do:
-
-```
-> docker stack deploy -c config/production-stack.yml pdsc-webstack
-```
-
-### Removing the stack
-
-Putting aside the question of why you are doing this...
-
-```
-docker stack rm pdsc-webstack
-```

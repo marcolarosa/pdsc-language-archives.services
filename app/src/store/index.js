@@ -4,9 +4,7 @@ import Vue from "vue";
 import Vuex from "vuex";
 Vue.use(Vuex);
 
-// import {superStoreModule} from './super';
-// import {adminStoreModule} from './admin';
-// import {adminLogModule} from './admin/log';
+import { explorerStoreModule } from "./explorer";
 
 const configuration = {
     strict: process.env.NODE_ENV !== "production",
@@ -14,6 +12,8 @@ const configuration = {
         asideWidth: "200px"
     },
     mutations: {},
-    modules: {}
+    modules: {
+        explorerStore: explorerStoreModule
+    }
 };
 export const store = new Vuex.Store(configuration);

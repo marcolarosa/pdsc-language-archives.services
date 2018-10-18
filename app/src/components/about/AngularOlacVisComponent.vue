@@ -5,9 +5,9 @@
         </div>
         <p>
             The <a href="http://www.language-archives.org/" target="_blank">Open Language Archives Community</a>
-            is an international partnership of institutions and individuals who are creating a worldwide virtual 
-            library of language resources by: (i) developing consensus on best current practice for the digital 
-            archiving of language resources, and (ii) developing a network of interoperating repositories and 
+            is an international partnership of institutions and individuals who are creating a worldwide virtual
+            library of language resources by: (i) developing consensus on best current practice for the digital
+            archiving of language resources, and (ii) developing a network of interoperating repositories and
             services for housing and accessing such resources.
         </p>
         <p>
@@ -15,19 +15,19 @@
             languages that do not have many resources?
         </p>
         <p>
-            - Use the application @ <a href="http://language-archives.services/olacvis/" target="_blank">http://language-archives.services/olacvis/</a><br/>
+            - Use the application @ <a href="http://language-archives.services/olacvis/" target="_blank">http://language-archives.services/olacvis/</a><br />
             - The source code is accessible @ <a href="https://github.com/marcolarosa/pdsc-olac-visualisation" target="_blank">https://github.com/marcolarosa/pdsc-olac-visualisation</a>
         </p>
         <div class="outer ">
-            <img src="src/assets/images/olacvis.jpg" class="style-image position-image1">
-            <img src="src/assets/images/olacvis1.jpg" class="style-image position-image2">
-            <img src="src/assets/images/olacvis2.jpg" class="style-image position-image3">
+            <img src="assets/images/olacvis.jpg" class="style-image position-image1">
+            <img src="assets/images/olacvis1.jpg" class="style-image position-image2">
+            <img src="assets/images/olacvis2.jpg" class="style-image position-image3">
         </div>
     </el-card>
 </template>
 
 <script>
-import SiteHeaderComponent from "./SiteHeaderComponent.vue";
+import SiteHeaderComponent from "src/components/SiteHeaderComponent.vue";
 import NabuDescriptionComponent from "./NabuDescriptionComponent.vue";
 
 export default {

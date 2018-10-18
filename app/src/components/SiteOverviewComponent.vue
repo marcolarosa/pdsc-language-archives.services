@@ -4,13 +4,13 @@
             <div class="col">
                 <p>
                     The Centre of Excellence for the Dynamics of Language is focussed on investigating
-                    how languages <a href="http://www.dynamicsoflanguage.edu.au/research/language-diversity/" target="_blank">vary</a>, 
-                    how we learn <a href="http://www.dynamicsoflanguage.edu.au/research/language-learning/" target="_blank">them</a>, 
+                    how languages <a href="http://www.dynamicsoflanguage.edu.au/research/language-diversity/" target="_blank">vary</a>,
+                    how we learn <a href="http://www.dynamicsoflanguage.edu.au/research/language-learning/" target="_blank">them</a>,
                     how we <a href="http://www.dynamicsoflanguage.edu.au/research/language-processing/" target="_blank">process</a>
                     them and how they <a href="http://www.dynamicsoflanguage.edu.au/research/language-evolution/" target="_blank">evolve</a>.
                 </p>
                 <p>
-                    A key aspect of our work is the use and development of cutting edge technologies 
+                    A key aspect of our work is the use and development of cutting edge technologies
                     to facilitate community access to primary records at the same time as
                     curating them for research purposes. On this site we provide a
                     visualisation of records in the world's language archives based on the Open
@@ -18,7 +18,7 @@
                     available for each language.
                 </p>
                 <p>
-                    To read more about what we do 
+                    To read more about what we do
                     <a href="http://www.dynamicsoflanguage.edu.au" target="_blank">visit our main site.</a>
                 </p>
 
@@ -40,9 +40,9 @@
                 <p class='text-center'>
                     <em>
                         <strong>
-                            The projects shown in this site are led by <a href="http://nthieberger.net" target="_blank">Nick Thieberger</a> and 
-                            have been funded as part of the<br/>
-                            ARC Centre of Excellence for the Dynamics of Language (ARC grant CE140100041). 
+                            The projects shown in this site are led by <a href="http://nthieberger.net" target="_blank">Nick Thieberger</a> and
+                            have been funded as part of the<br />
+                            ARC Centre of Excellence for the Dynamics of Language (ARC grant CE140100041).
                         </strong>
                     </em>
                 </p>
@@ -59,31 +59,36 @@ export default {
                 {
                     id: 1,
                     name: "Nabu",
-                    image: "src/assets/images/nabu.jpg",
+                    ref: "nabuImage",
+                    image: "assets/images/nabu.jpg",
                     uri: "/about/nabu"
                 },
                 {
                     id: 2,
                     name: "Nabu Collection Viewer",
-                    image: "src/assets/images/viewer.jpg",
+                    ref: "viewerImage",
+                    image: "assets/images/viewer.jpg",
                     uri: "/about/nabu-viewer"
                 },
                 {
                     id: 3,
                     name: "Language Archives Data Visualisation",
-                    image: "src/assets/images/olacvis.jpg",
+                    ref: "olacvisImage",
+                    image: "assets/images/olacvis.jpg",
                     uri: "/about/olac-vis"
                 },
                 {
                     id: 4,
                     name: "Language Archives Data Service",
-                    image: "src/assets/images/olacdata.jpg",
+                    ref: "olacdataImage",
+                    image: "assets/images/olacdata.jpg",
                     uri: "/about/data-service"
                 },
                 {
                     id: 5,
                     name: "Data Loader",
-                    image: "src/assets/images/dataloader.jpg",
+                    ref: "dataloaderImage",
+                    image: "assets/images/dataloader.jpg",
                     uri: "/about/data-loader"
                 }
             ]

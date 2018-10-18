@@ -1,13 +1,11 @@
 "use strict";
 
 const path = require("path");
-const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const VueLoaderPlugin = require("vue-loader/lib/plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const history = require("connect-history-api-fallback");
-const convert = require("koa-connect");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 module.exports = {
     target: "web",
@@ -28,24 +26,13 @@ module.exports = {
             }
         }
     },
-    serve: {
+    devServer: {
+        contentBase: path.join(__dirname, "dist"),
+        compress: true,
         host: "0.0.0.0",
-        port: "9000",
-        devMiddleware: {
-            writeToDisk: true
-        },
-        hotClient: {
-            allEntries: true,
-            host: {
-                server: "192.168.56.2",
-                client: "192.168.56.2"
-            }
-        },
-        add: (app, middleware, options) => {
-            const historyOptions = {};
-
-            app.use(convert(history(historyOptions)));
-        }
+        port: 9000,
+        historyApiFallback: true,
+        watchContentBase: true
     },
     plugins: [
         new CleanWebpackPlugin(["dist/"], {
@@ -59,7 +46,16 @@ module.exports = {
             title: "Inteja",
             template: "./src/index.html"
         }),
-        new VueLoaderPlugin()
+        new VueLoaderPlugin(),
+        new CopyWebpackPlugin(
+            [
+                {
+                    from: "src/assets/images",
+                    to: "assets/images"
+                }
+            ],
+            {}
+        )
     ],
     module: {
         rules: [
@@ -82,7 +78,7 @@ module.exports = {
                 use: ["vue-style-loader", "css-loader", "sass-loader"]
             },
             {
-                test: /\.(woff|woff2|ttf|eot|svg)(\?]?.*)?$/,
+                test: /\.(woff|woff2|ttf|eot|svg|png|jp(e*)g|gif)?$/,
                 loader: "file-loader?name=res/[name].[ext]?[hash]"
             }
         ]

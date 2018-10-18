@@ -13,15 +13,18 @@ const SiteOverviewComponent = () =>
     import(/* webpackChunkName: "group-shell" */ "components/SiteOverviewComponent.vue");
 
 const NabuDescriptionComponent = () =>
-    import(/* webpackChunkName: "group-apps" */ "components/NabuDescriptionComponent.vue");
+    import(/* webpackChunkName: "group-apps" */ "components/about/NabuDescriptionComponent.vue");
 const NabuCollectionViewerDescriptionComponent = () =>
-    import(/* webpackChunkName: "group-apps" */ "components/NabuCollectionViewerDescriptionComponent.vue");
+    import(/* webpackChunkName: "group-apps" */ "components/about/NabuCollectionViewerDescriptionComponent.vue");
 const AngularOlacVisComponent = () =>
-    import(/* webpackChunkName: "group-apps" */ "components/AngularOlacVisComponent.vue");
+    import(/* webpackChunkName: "group-apps" */ "components/about/AngularOlacVisComponent.vue");
 const DataLoaderDescriptionComponent = () =>
-    import(/* webpackChunkName: "group-apps" */ "components/DataLoaderDescriptionComponent.vue");
+    import(/* webpackChunkName: "group-apps" */ "components/about/DataLoaderDescriptionComponent.vue");
 const DataServiceDescriptionComponent = () =>
-    import(/* webpackChunkName: "group-apps" */ "components/DataServiceDescriptionComponent.vue");
+    import(/* webpackChunkName: "group-apps" */ "components/about/DataServiceDescriptionComponent.vue");
+
+const OlacExplorerComponent = () =>
+    import(/* webpackChunkName: "group-explore" */ "components/olac-explorer/OlacExplorerComponent.vue");
 
 export const router = new VueRouter({
     mode: "history",
@@ -47,6 +50,10 @@ export const router = new VueRouter({
                     component: DataServiceDescriptionComponent
                 }
             ]
+        },
+        {
+            path: "/olac-explorer",
+            component: OlacExplorerComponent
         }
     ]
 });
