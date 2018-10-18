@@ -16,36 +16,48 @@ import { mapState } from "vuex";
 
 export default {
     data() {
-        return {
-            selectedCountry: undefined,
-            selectedDate: undefined
-        };
+        return {};
     },
     computed: {
-        ...mapState({
-            dates: state => state.explorerStore.dates,
-            countries: state => state.explorerStore.countries
-        })
+        selectedDate: {
+            get: function() {
+                const store = this.$store.state.explorerStore;
+                if (store.selected.date) return store.selected.date;
+                let dates = store.dates;
+                return dates[dates.length - 1];
+            },
+            set: function(date) {
+                this.saveSelectedDate(date);
+            }
+        },
+        selectedCountry: {
+            get: function() {
+                const store = this.$store.state.explorerStore;
+                if (store.selected.country) return store.selected.country;
+            },
+            set: function(country) {
+                this.saveSelectedCountry(country);
+            }
+        },
+        countries: function() {
+            return this.$store.state.explorerStore.countries;
+        },
+        dates: function() {
+            return this.$store.state.explorerStore.dates;
+        }
     },
     methods: {
-        saveSelectedCountry() {
-            this.$store.commit(
-                "explorerStore/saveSelectedCountry",
-                this.selectedCountry
-            );
+        saveSelectedCountry(country) {
+            this.$store.commit("explorerStore/saveSelectedCountry", country);
             this.loadCountryData();
         },
-        saveSelectedDate() {
-            this.$store.commit(
-                "explorerStore/saveSelectedDate",
-                this.selectedDate
-            );
+        saveSelectedDate(date) {
+            this.$store.commit("explorerStore/saveSelectedDate", date);
             this.loadCountryData();
         },
         loadCountryData() {
-            this.$store.dispatch("explorerStore/getCountryData", {
-                country: this.selectedCountry
-            });
+            if (!this.selectedCountry) return;
+            this.$store.dispatch("explorerStore/getCountryData");
         }
     }
 };
