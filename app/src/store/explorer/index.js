@@ -63,8 +63,10 @@ export const explorerStoreModule = {
             const countries = await explorerService.getCountries();
             commit("saveCountries", countries);
         },
-        async getCountryData({ commit }, { country }) {
-            const data = await explorerService.getCountryData(country);
+        async getCountryData({ commit, state }) {
+            const data = await explorerService.getCountryData(
+                state.selected.country
+            );
             commit("saveCountryData", data);
 
             data.languages.forEach(async language => {
