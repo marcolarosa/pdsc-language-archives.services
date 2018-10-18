@@ -22,7 +22,7 @@
                     <a href="http://www.dynamicsoflanguage.edu.au" target="_blank">visit our main site.</a>
                 </p>
 
-                <div>
+                <!-- <div>
                     <el-carousel :interval="4000" type="card" height="340px">
                         <el-carousel-item v-for="item in items" :key="item.id">
                             <router-link :to="item.uri">
@@ -32,7 +32,72 @@
                         </el-carousel-item>
                     </el-carousel>
                 </div>
-                <div class="text-center"><em>(click the tiles to see more information)</em></div>
+                <div class="text-center"><em>(click the tiles to see more information)</em></div> -->
+
+                <div class="row">
+                    <div class="col-4">
+                        <el-card class="box-card">
+                            <div slot="header">
+                                {{items[0].name}}
+                            </div>
+                            <router-link :to="items[0].uri">
+                                <img :src="items[0].image" class="style-image mx-auto d-block">
+                            </router-link>
+                        </el-card>
+                    </div>
+                    <div class="col-4">
+                        <el-card class="box-card">
+                            <div slot="header">
+                                {{items[1].name}}
+                            </div>
+                            <router-link :to="items[1].uri">
+                                <img :src="items[1].image" class="style-image mx-auto d-block">
+                            </router-link>
+                        </el-card>
+                    </div>
+                    <div class="col-4">
+                        <el-card class="box-card">
+                            <div slot="header">
+                                {{items[2].name}}
+                            </div>
+                            <router-link :to="items[2].uri">
+                                <img :src="items[2].image" class="style-image mx-auto d-block">
+                            </router-link>
+                        </el-card>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-4">
+                        <el-card class="box-card">
+                            <div slot="header">
+                                {{items[3].name}}
+                            </div>
+                            <router-link :to="items[3].uri">
+                                <img :src="items[3].image" class="style-image mx-auto d-block">
+                            </router-link>
+                        </el-card>
+                    </div>
+                    <div class="col-4">
+                        <el-card class="box-card">
+                            <div slot="header">
+                                {{items[4].name}}
+                            </div>
+                            <router-link :to="items[4].uri">
+                                <img :src="items[4].image" class="style-image mx-auto d-block">
+                            </router-link>
+                        </el-card>
+                    </div>
+                    <div class="col-4">
+                        <el-card class="box-card">
+                            <div slot="header">
+                                {{items[5].name}}
+                            </div>
+                            <router-link :to="items[5].uri">
+                                <img :src="items[5].image" class="style-image mx-auto d-block">
+                            </router-link>
+                        </el-card>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row pad-funding-note">
@@ -57,37 +122,38 @@ export default {
         return {
             items: [
                 {
-                    id: 1,
+                    id: 0,
                     name: "Nabu",
-                    ref: "nabuImage",
                     image: "assets/images/nabu.jpg",
                     uri: "/about/nabu"
                 },
                 {
-                    id: 2,
+                    id: 1,
                     name: "Nabu Collection Viewer",
-                    ref: "viewerImage",
                     image: "assets/images/viewer.jpg",
                     uri: "/about/nabu-viewer"
                 },
                 {
-                    id: 3,
+                    id: 2,
                     name: "Language Archives Data Visualisation",
-                    ref: "olacvisImage",
                     image: "assets/images/olacvis.jpg",
                     uri: "/about/olac-vis"
                 },
                 {
+                    id: 3,
+                    name: "Language Archives Explorer",
+                    image: "assets/images/olac-explorer.png",
+                    uri: "/olac-explorer"
+                },
+                {
                     id: 4,
                     name: "Language Archives Data Service",
-                    ref: "olacdataImage",
                     image: "assets/images/olacdata.jpg",
                     uri: "/about/data-service"
                 },
                 {
                     id: 5,
                     name: "Data Loader",
-                    ref: "dataloaderImage",
                     image: "assets/images/dataloader.jpg",
                     uri: "/about/data-loader"
                 }
@@ -105,7 +171,8 @@ export default {
 }
 
 .style-image {
-    height: 300px;
+    width: 100%;
+    height: auto;
 }
 
 .el-carousel__item h5 {
