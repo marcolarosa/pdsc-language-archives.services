@@ -1,15 +1,20 @@
 <template>
     <div>
-        <el-table :data="stats" style="width: 100%" v-if="stats">
-            <el-table-column prop="name" label="Name" width="150" fixed>
-            </el-table-column>
-            <el-table-column prop="code" label="Code" width="100" fixed>
-            </el-table-column>
-            <span v-for="type of resourceTypes" :key="type">
-                <el-table-column :prop="type" :label="type" min-width="150">
+        <el-card class="box-card">
+            <div slot="header" class="clearfix">
+                <span>Resource Counts for {{country}}</span>
+            </div>
+            <el-table :data="stats" style="width: 100%" v-if="stats">
+                <el-table-column prop="name" label="Name" width="150" fixed>
                 </el-table-column>
-            </span>
-        </el-table>
+                <el-table-column prop="code" label="Code" width="100" fixed>
+                </el-table-column>
+                <span v-for="type of resourceTypes" :key="type">
+                    <el-table-column :prop="type" :label="type" min-width="150">
+                    </el-table-column>
+                </span>
+            </el-table>
+        </el-card>
     </div>
 </template>
 
@@ -23,6 +28,9 @@ export default {
         };
     },
     computed: {
+        country: function() {
+            return this.$store.state.explorerStore.selected.country;
+        },
         stats: function() {
             let languageData = this.$store.state.explorerStore.selected
                 .languageData;

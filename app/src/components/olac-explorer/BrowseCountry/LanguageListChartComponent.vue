@@ -1,6 +1,8 @@
 <template>
     <div>
-        <div ref="chart"></div>
+        <el-card class="box-card">
+            <div ref="chart"></div>
+        </el-card>
     </div>
 </template>
 
@@ -45,6 +47,10 @@ export default {
                 xaxis: {
                     type: "string"
                 },
+                title: {
+                    text: "Resource counts per language",
+                    align: "center"
+                },
                 fill: {
                     opacity: 1
                 }
@@ -52,7 +58,21 @@ export default {
         };
     },
     computed: {
+        country: function() {
+            return this.$store.state.explorerStore.selected.country;
+        },
         stats: function() {
+            this.renderChart();
+        }
+    },
+    watch: {
+        stats: {}
+    },
+    mounted() {
+        this.renderChart();
+    },
+    methods: {
+        renderChart() {
             const languageData = this.$store.state.explorerStore.selected
                 .languageData;
             const meta = this.$store.state.explorerStore.selected
@@ -76,14 +96,16 @@ export default {
                     options.series = orderBy(options.series, "name");
                     this.chart.updateSeries(options.series);
                 } else {
-                    this.chart = new ApexCharts(this.$refs["chart"], options);
-                    this.chart.render();
+                    if (this.$refs["chart"]) {
+                        this.chart = new ApexCharts(
+                            this.$refs["chart"],
+                            options
+                        );
+                        this.chart.render();
+                    }
                 }
             }
         }
-    },
-    watch: {
-        stats: {}
     }
 };
 
