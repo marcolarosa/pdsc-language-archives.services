@@ -1,5 +1,6 @@
 import ExplorerService from "services/explorer.service";
 const explorerService = new ExplorerService();
+import { round, groupBy } from "lodash";
 
 export const explorerStoreModule = {
     namespaced: true,
@@ -7,6 +8,7 @@ export const explorerStoreModule = {
         dates: [],
         regions: [],
         countries: [],
+        loading: 0,
         selected: {
             country: undefined,
             date: undefined,
@@ -36,7 +38,7 @@ export const explorerStoreModule = {
         saveLanguageMetadata(state, metadata) {
             state.selected.languageMetadata = [
                 ...state.selected.languageMetadata,
-                ...[metadata]
+                ...metadata
             ];
             // console.log(
             //     JSON.stringify(state.selected.languageMetadata, null, 2)
@@ -50,6 +52,9 @@ export const explorerStoreModule = {
             //         return language;
             //     }
             // );
+        },
+        saveLoadingPercentage(state, percentage) {
+            state.loading = percentage;
         }
     },
     actions: {
@@ -64,17 +69,36 @@ export const explorerStoreModule = {
             commit("saveCountries", countries);
         },
         async getCountryData({ commit, state }) {
+            commit("saveLoadingPercentage", 1);
             const data = await explorerService.getCountryData(
                 state.selected.country
             );
             commit("saveCountryData", data);
 
-            data.languages.forEach(async language => {
-                let metadata = await explorerService.getLanguageData({
-                    code: language.code
-                });
-                commit("saveLanguageMetadata", metadata);
-            });
+            const languages = groupBy(state.selected.languageMetadata, "code");
+            const nLanguages = data.languages.length;
+            let i = 0;
+            let languageMetadata = [];
+            for (let language of data.languages) {
+                i += 1;
+                if (!languages[language.code]) {
+                    let metadata = await explorerService.getLanguageData({
+                        code: language.code
+                    });
+                    languageMetadata.push(metadata);
+                    await sleep(100);
+                }
+                commit("saveLoadingPercentage", round((i / nLanguages) * 100));
+            }
+            commit("saveLanguageMetadata", languageMetadata);
         }
     }
 };
+
+function sleep(time) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve();
+        }, time);
+    });
+}

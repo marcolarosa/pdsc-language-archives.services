@@ -58,6 +58,9 @@ export default {
         };
     },
     computed: {
+        percentage: function() {
+            return this.$store.state.explorerStore.loading;
+        },
         country: function() {
             return this.$store.state.explorerStore.selected.country;
         },
@@ -73,6 +76,12 @@ export default {
     },
     methods: {
         renderChart() {
+            if (this.percentage === 1) {
+                try {
+                    this.chart.updateSeries([{ name: "", data: [] }]);
+                } catch (error) {}
+            }
+            if (this.percentage !== 100) return;
             const languageData = this.$store.state.explorerStore.selected
                 .languageData;
             const meta = this.$store.state.explorerStore.selected

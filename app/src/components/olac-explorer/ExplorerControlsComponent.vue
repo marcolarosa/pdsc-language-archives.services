@@ -1,13 +1,22 @@
 <template>
     <div>
-        <el-select v-model="selectedCountry" placeholder="Select a country" @change="saveSelectedCountry">
-            <el-option v-for="country in countries" :key="country" :label="country" :value="country">
-            </el-option>
-        </el-select>
-        <el-select v-model="selectedDate" placeholder="Select a date" @change="saveSelectedDate">
-            <el-option v-for="date in dates" :key="date" :label="date" :value="date">
-            </el-option>
-        </el-select>
+        <div class="row">
+            <div class="col-4">
+                <el-select v-model="selectedCountry" placeholder="Select a country" @change="saveSelectedCountry">
+                    <el-option v-for="country in countries" :key="country" :label="country" :value="country">
+                    </el-option>
+                </el-select>
+            </div>
+            <div class="col-4">
+                <el-select v-model="selectedDate" placeholder="Select a date" @change="saveSelectedDate">
+                    <el-option v-for="date in dates" :key="date" :label="date" :value="date">
+                    </el-option>
+                </el-select>
+            </div>
+            <div class="col-4">
+                <el-progress :text-inside="true" :stroke-width="18" :percentage="percentage" status="success" v-if="percentage"></el-progress>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -19,6 +28,14 @@ export default {
         return {};
     },
     computed: {
+        percentage: function() {
+            let loading = this.$store.state.explorerStore.loading;
+            if (loading === 0 || loading === 100) {
+                return undefined;
+            } else {
+                return loading;
+            }
+        },
         selectedDate: {
             get: function() {
                 const store = this.$store.state.explorerStore;

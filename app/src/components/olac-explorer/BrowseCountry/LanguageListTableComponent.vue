@@ -4,7 +4,7 @@
             <div slot="header" class="clearfix">
                 <span>Resource Counts for {{country}}</span>
             </div>
-            <el-table :data="stats" style="width: 100%" v-if="stats">
+            <el-table :data="stats" style="width: 100%" height="250" v-if="stats">
                 <el-table-column prop="name" label="Name" width="150" fixed>
                 </el-table-column>
                 <el-table-column prop="code" label="Code" width="100" fixed>
