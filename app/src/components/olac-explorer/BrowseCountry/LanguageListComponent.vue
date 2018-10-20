@@ -1,5 +1,10 @@
 <template>
     <div>
+        <!-- <div class="row my-2">
+            <div class="col">
+                <filter-language-component />
+            </div>
+        </div> -->
         <div class="row my-2">
             <div class="col">
                 <language-list-table-component />
@@ -20,11 +25,13 @@ import { compact } from "lodash";
 import ApexCharts from "apexcharts";
 import LanguageListTableComponent from "./LanguageListTableComponent.vue";
 import LanguageListChartComponent from "./LanguageListChartComponent.vue";
+import FilterLanguageComponent from "./FilterLanguageComponent.vue";
 
 export default {
     components: {
         LanguageListTableComponent,
-        LanguageListChartComponent
+        LanguageListChartComponent,
+        FilterLanguageComponent
     },
     data() {
         return {};
