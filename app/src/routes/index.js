@@ -59,7 +59,8 @@ export const router = new VueRouter({
             children: [
                 {
                     path: "browse-country",
-                    component: ExplorerBrowseCountryComponent
+                    component: ExplorerBrowseCountryComponent,
+                    children: [{ path: ":country" }]
                 }
             ]
         }

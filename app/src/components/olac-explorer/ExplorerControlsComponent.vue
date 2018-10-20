@@ -55,6 +55,9 @@ export default {
                 if (store.selected.country) return store.selected.country;
             },
             set: function(country) {
+                this.$router.push({
+                    path: `/olac-explorer/browse-country/${country}`
+                });
                 this.saveSelectedCountry(country);
             }
         },
@@ -64,6 +67,10 @@ export default {
         dates: function() {
             return this.$store.state.explorerStore.dates;
         }
+    },
+    mounted() {
+        if (this.$route.params.country)
+            this.saveSelectedCountry(this.$route.params.country);
     },
     methods: {
         saveSelectedCountry(country) {
