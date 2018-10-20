@@ -40,18 +40,6 @@ export const explorerStoreModule = {
                 ...state.selected.languageMetadata,
                 ...metadata
             ];
-            // console.log(
-            //     JSON.stringify(state.selected.languageMetadata, null, 2)
-            // );
-
-            // state.selected.languageData.languages = state.selected.languageData.languages.map(
-            //     language => {
-            //         if (language.code === metadata.code) {
-            //             language = { ...language, ...metadata };
-            //         }
-            //         return language;
-            //     }
-            // );
         },
         saveLoadingPercentage(state, percentage) {
             state.loading = percentage;
@@ -70,9 +58,10 @@ export const explorerStoreModule = {
         },
         async getCountryData({ commit, state }) {
             commit("saveLoadingPercentage", 1);
-            const data = await explorerService.getCountryData(
-                state.selected.country
-            );
+            const data = await explorerService.getCountryData({
+                country: state.selected.country,
+                date: state.selected.date
+            });
             commit("saveCountryData", data);
 
             const languages = groupBy(state.selected.languageMetadata, "code");
@@ -83,7 +72,8 @@ export const explorerStoreModule = {
                 i += 1;
                 if (!languages[language.code]) {
                     let metadata = await explorerService.getLanguageData({
-                        code: language.code
+                        code: language.code,
+                        date: state.selected.date
                     });
                     languageMetadata.push(metadata);
                     await sleep(100);
