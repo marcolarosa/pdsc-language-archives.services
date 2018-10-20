@@ -2,7 +2,7 @@
     <div>
         <div class="row">
             <div class="col-4">
-                <el-select v-model="selectedCountry" placeholder="Select a country" @change="saveSelectedCountry">
+                <el-select v-model="selectedCountry" placeholder="Select a country" filterable @change="saveSelectedCountry">
                     <el-option v-for="country in countries" :key="country" :label="country" :value="country">
                     </el-option>
                 </el-select>
