@@ -28,10 +28,14 @@ export default {
         };
     },
     computed: {
+        percentage: function() {
+            return this.$store.state.explorerStore.loading;
+        },
         country: function() {
             return this.$store.state.explorerStore.selected.country;
         },
         stats: function() {
+            if (this.percentage !== 100) return;
             let languageData = this.$store.state.explorerStore.selected
                 .languageData;
             const meta = this.$store.state.explorerStore.selected
