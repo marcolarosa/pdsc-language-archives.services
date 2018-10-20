@@ -27,6 +27,11 @@ export default {
                         enabled: true
                     }
                 },
+                legend: {
+                    onItemClick: {
+                        toggleDataSeries: false
+                    }
+                },
                 responsive: [
                     {
                         breakpoint: 700,
