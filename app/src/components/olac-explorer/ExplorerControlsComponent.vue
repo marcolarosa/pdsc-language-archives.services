@@ -41,7 +41,9 @@ export default {
                 const store = this.$store.state.explorerStore;
                 if (store.selected.date) return store.selected.date;
                 let dates = store.dates;
-                return dates[dates.length - 1];
+                const date = dates[dates.length - 1];
+                this.saveSelectedDate(date);
+                return date;
             },
             set: function(date) {
                 this.saveSelectedDate(date);
