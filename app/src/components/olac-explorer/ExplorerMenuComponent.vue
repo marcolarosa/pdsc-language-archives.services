@@ -1,5 +1,5 @@
 <template>
-    <el-menu default-active="1" :router="true" class="style-menu">
+    <el-menu default-active="1" mode="vertical" :router="true" class="style-menu">
         <div class="row">
             <div class="col text-center py-2">
                 <router-link to="/">
@@ -30,10 +30,8 @@ export default {
 
 <style lang="scss" scoped>
 .style-menu {
-    position: fixed;
-    left: 0;
     height: 100vh;
-    min-width: 220px;
+    min-width: 250px;
 }
 
 .style-logo {

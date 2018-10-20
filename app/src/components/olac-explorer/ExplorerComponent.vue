@@ -1,9 +1,9 @@
 <template>
     <div class="row">
-        <div class="col">
+        <div class="style-menu">
             <explorer-menu-component />
         </div>
-        <div class="col-10 p-3">
+        <div class="style-container p-3">
             <router-view></router-view>
         </div>
     </div>
@@ -26,4 +26,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.style-menu {
+    position: fixed;
+    left: 0;
+}
+.style-container {
+    position: relative;
+    left: 250px;
+    min-width: 1000px;
+    overflow: auto;
+}
 </style>
