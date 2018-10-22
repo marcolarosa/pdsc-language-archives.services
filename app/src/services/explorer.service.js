@@ -21,12 +21,22 @@ export default class ExplorerService {
     }
 
     async getCountryData({ country, date }) {
-        let uri = `/countries/${country}/stats?date=${date}`;
+        let uri;
+        if (!date) {
+            uri = `/countries/${country}/stats`;
+        } else {
+            uri = `/countries/${country}/stats?date=${date}`;
+        }
         return (await http.get(uri)).data;
     }
 
     async getLanguageData({ code, date }) {
-        let uri = `/languages/${code}?date=${date}`;
+        let uri;
+        if (!date) {
+            uri = `/languages/${code}`;
+        } else {
+            uri = `/languages/${code}?date=${date}`;
+        }
         return (await http.get(uri)).data.harvests[0].metadata;
     }
 }
