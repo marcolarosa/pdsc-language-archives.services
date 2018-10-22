@@ -1,10 +1,10 @@
 <template>
     <div>
-        <!-- <div class="row my-2">
+        <div class="row my-2">
             <div class="col">
                 <filter-language-component />
             </div>
-        </div> -->
+        </div>
         <div class="row my-2">
             <div class="col">
                 <language-list-table-component />

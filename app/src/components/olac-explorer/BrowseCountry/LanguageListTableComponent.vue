@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import { compact, orderBy } from "lodash";
+import { compact, orderBy, includes, isEmpty } from "lodash";
 
 export default {
     data() {
@@ -35,11 +35,11 @@ export default {
             return this.$store.state.explorerStore.selected.country;
         },
         stats: function() {
+            let store = this.$store.state.explorerStore;
             if (this.percentage !== 100) return;
-            let languageData = this.$store.state.explorerStore.selected
-                .languageData;
-            const meta = this.$store.state.explorerStore.selected
-                .languageMetadata;
+            let languageData = store.selected.languageData;
+            const meta = store.selected.languageMetadata;
+            const filters = store.selected.filters;
 
             if (languageData) {
                 this.resourceTypes = extractResourceTypes(languageData);
@@ -48,11 +48,33 @@ export default {
                     resourceTypes: this.resourceTypes
                 });
                 stats = stats.map(s => {
-                    let language = meta.filter(l => l.code === s.code)[0];
-                    if (language) s.name = language.name;
-                    return s;
+                    if (isEmpty(filters.languages)) {
+                        let language = meta.filter(l => l.code === s.code)[0];
+                        if (language) s.name = language.name;
+                        return s;
+                    } else {
+                        if (
+                            filters.action === "show" &&
+                            includes(filters.languages, s.code)
+                        ) {
+                            let language = meta.filter(
+                                l => l.code === s.code
+                            )[0];
+                            if (language) s.name = language.name;
+                            return s;
+                        } else if (
+                            filters.action === "hide" &&
+                            !includes(filters.languages, s.code)
+                        ) {
+                            let language = meta.filter(
+                                l => l.code === s.code
+                            )[0];
+                            if (language) s.name = language.name;
+                            return s;
+                        }
+                    }
                 });
-                return orderBy(stats, "name");
+                return orderBy(compact(stats), "name");
             }
         }
     }

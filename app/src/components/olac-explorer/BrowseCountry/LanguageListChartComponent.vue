@@ -8,7 +8,7 @@
 
 <script>
 import { mapState } from "vuex";
-import { compact, cloneDeep, orderBy } from "lodash";
+import { compact, cloneDeep, orderBy, includes, isEmpty } from "lodash";
 import ApexCharts from "apexcharts";
 
 export default {
@@ -101,6 +101,28 @@ export default {
                     data: languageData,
                     resourceTypes
                 });
+
+                const filters = this.$store.state.explorerStore.selected
+                    .filters;
+                options.series = options.series.map(language => {
+                    if (isEmpty(filters.languages)) {
+                        return language;
+                    } else {
+                        if (
+                            filters.action === "show" &&
+                            includes(filters.languages, language.name)
+                        ) {
+                            return language;
+                        } else if (
+                            filters.action === "hide" &&
+                            !includes(filters.languages, language.name)
+                        ) {
+                            return language;
+                        }
+                    }
+                });
+                options.series = compact(options.series);
+
                 if (this.chart) {
                     options.series = options.series.map(s => {
                         let language = meta.filter(l => l.code === s.name)[0];

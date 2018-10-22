@@ -1,38 +1,64 @@
 <template>
-    <div class="row my-2">
-        <div class="col">
-            <el-tag :key="tag" v-for="tag in dynamicTags" closable :disable-transitions="false" @close="handleClose(tag)">
-                {{tag}}
-            </el-tag>
-            <el-input class="input-new-tag" v-if="inputVisible" v-model="inputValue" ref="saveTagInput" size="mini" @keyup.enter.native="handleInputConfirm" @blur="handleInputConfirm">
-            </el-input>
-            <el-button v-else class="button-new-tag" size="small" @click="showInput">+ Hide Language</el-button>
+    <div>
+        <div class="row my-2">
+            <div class="col-3">
+                <el-select v-model="action" @change="handleSelection">
+                    <el-option key="show" label="Show only these languages" value="show"></el-option>
+                    <el-option key="hide" label="Hide these languages" value="hide"></el-option>
+                </el-select>
+            </div>
+            <div class="col">
+                <el-select v-model="selectedLanguages" multiple class="style-select" @change="handleSelection">
+                    <el-option v-for="language of languages" :key="language.code" :label="language.name" :value="language.code">
+                        <span style="float: left">{{language.name}}</span>
+                        <span style="float: right; padding-right: 40px; color: #8492a6; font-size: 13px">{{ language.code}}</span>
+                    </el-option>
+                </el-select>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
+import { groupBy, orderBy } from "lodash";
+
 export default {
     data() {
         return {
-            dynamicTags: ["Tag 1", "Tag 2", "Tag 3"],
+            action: "show",
+            selectedLanguages: [],
             inputVisible: false,
             inputValue: ""
         };
     },
-    methods: {
-        handleClose(tag) {
-            this.dynamicTags.splice(this.dynamicTags.indexOf(tag), 1);
+    computed: {
+        percentage: function() {
+            return this.$store.state.explorerStore.loading;
         },
-
-        showInput() {
-            this.inputVisible = true;
-            this.$nextTick(_ => {
-                this.$refs.saveTagInput.$refs.input.focus();
+        languages: function() {
+            if (this.percentage !== 100) return;
+            let store = this.$store.state.explorerStore;
+            let languages = store.selected.languageData.languages;
+            let meta = groupBy(store.selected.languageMetadata, "code");
+            languages = languages.map(language => {
+                language = {
+                    ...language,
+                    name: meta[language.code][0].name
+                };
+                return language;
+            });
+            return orderBy(languages, "name");
+        }
+    },
+    methods: {
+        handleSelection() {
+            this.$store.commit("explorerStore/saveFilters", {
+                action: this.action,
+                languages: this.selectedLanguages
             });
         },
 
-        handleInputConfirm() {
+        addLanguage() {
             let inputValue = this.inputValue;
             if (inputValue) {
                 this.dynamicTags.push(inputValue);
@@ -49,5 +75,8 @@ export default {
     width: 90px;
     margin-left: 10px;
     vertical-align: bottom;
+}
+.style-select {
+    width: 100%;
 }
 </style>

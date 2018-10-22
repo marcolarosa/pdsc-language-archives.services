@@ -13,7 +13,8 @@ export const explorerStoreModule = {
             country: undefined,
             date: undefined,
             languageData: undefined,
-            languageMetadata: []
+            languageMetadata: [],
+            filters: {}
         }
     },
     mutations: {
@@ -43,6 +44,9 @@ export const explorerStoreModule = {
         },
         saveLoadingPercentage(state, percentage) {
             state.loading = percentage;
+        },
+        saveFilters(state, data) {
+            state.selected.filters = { ...data };
         }
     },
     actions: {
