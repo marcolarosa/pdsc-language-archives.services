@@ -38,7 +38,9 @@
                     <div class="col-4">
                         <el-card class="box-card">
                             <div slot="header">
-                                {{items[0].name}}
+                                <router-link :to="items[0].uri">
+                                    {{items[0].name}}
+                                </router-link>
                             </div>
                             <router-link :to="items[0].uri">
                                 <img :src="items[0].image" class="style-image mx-auto d-block">
@@ -48,7 +50,9 @@
                     <div class="col-4">
                         <el-card class="box-card">
                             <div slot="header">
-                                {{items[1].name}}
+                                <router-link :to="items[1].uri">
+                                    {{items[1].name}}
+                                </router-link>
                             </div>
                             <router-link :to="items[1].uri">
                                 <img :src="items[1].image" class="style-image mx-auto d-block">
@@ -58,7 +62,9 @@
                     <div class="col-4">
                         <el-card class="box-card">
                             <div slot="header">
-                                {{items[2].name}}
+                                <router-link :to="items[2].uri">
+                                    {{items[2].name}}
+                                </router-link>
                             </div>
                             <router-link :to="items[2].uri">
                                 <img :src="items[2].image" class="style-image mx-auto d-block">
@@ -70,7 +76,9 @@
                     <div class="col-4">
                         <el-card class="box-card">
                             <div slot="header">
-                                {{items[3].name}}
+                                <router-link :to="items[3].uri">
+                                    {{items[3].name}}
+                                </router-link>
                             </div>
                             <router-link :to="items[3].uri">
                                 <img :src="items[3].image" class="style-image mx-auto d-block">
@@ -80,7 +88,9 @@
                     <div class="col-4">
                         <el-card class="box-card">
                             <div slot="header">
-                                {{items[4].name}}
+                                <router-link :to="items[4].uri">
+                                    {{items[4].name}}
+                                </router-link>
                             </div>
                             <router-link :to="items[4].uri">
                                 <img :src="items[4].image" class="style-image mx-auto d-block">
@@ -90,12 +100,30 @@
                     <div class="col-4">
                         <el-card class="box-card">
                             <div slot="header">
-                                {{items[5].name}}
+                                <router-link :to="items[5].uri">
+                                    {{items[5].name}}
+                                </router-link>
                             </div>
                             <router-link :to="items[5].uri">
                                 <img :src="items[5].image" class="style-image mx-auto d-block">
                             </router-link>
                         </el-card>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-4">
+                        <div slot="header">
+                            <router-link :to="items[6].uri">
+                                {{items[6].name}}
+                            </router-link>
+                        </div>
+                        <router-link :to="items[6].uri">
+                            <img :src="items[6].image" class="style-image mx-auto d-block">
+                        </router-link>
+                    </div>
+                    <div class="col-4">
+                    </div>
+                    <div class="col-4">
                     </div>
                 </div>
             </div>
@@ -156,6 +184,12 @@ export default {
                     name: "Data Loader",
                     image: "assets/images/dataloader.jpg",
                     uri: "/about/data-loader"
+                },
+                {
+                    id: 6,
+                    name: "Word Generator",
+                    image: "assets/images/wordgen.png",
+                    uri: "/about/wordgen"
                 }
             ]
         };

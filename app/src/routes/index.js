@@ -22,6 +22,8 @@ const DataLoaderDescriptionComponent = () =>
     import(/* webpackChunkName: "group-apps" */ "components/about/DataLoaderDescriptionComponent.vue");
 const DataServiceDescriptionComponent = () =>
     import(/* webpackChunkName: "group-apps" */ "components/about/DataServiceDescriptionComponent.vue");
+const WordgenDescriptionComponent = () =>
+    import(/* webpackChunkName: "group-apps" */ "components/about/WordgenDescriptionComponent.vue");
 
 const ExplorerComponent = () =>
     import(/* webpackChunkName: "group-explore" */ "components/olac-explorer/ExplorerComponent.vue");
@@ -50,6 +52,10 @@ export const router = new VueRouter({
                 {
                     path: "/about/data-service",
                     component: DataServiceDescriptionComponent
+                },
+                {
+                    path: "/about/wordgen",
+                    component: WordgenDescriptionComponent
                 }
             ]
         },
