@@ -37,6 +37,6 @@ export default class ExplorerService {
         } else {
             uri = `/languages/${code}?date=${date}`;
         }
-        return (await http.get(uri)).data.harvests[0].metadata;
+        return (await http.get(uri)).data.language.harvests[0].metadata;
     }
 }
