@@ -1,6 +1,6 @@
 import ExplorerService from "services/explorer.service";
 const explorerService = new ExplorerService();
-import { round, groupBy } from "lodash";
+import { round, groupBy, uniqBy } from "lodash";
 
 export const explorerStoreModule = {
     namespaced: true,
@@ -8,12 +8,13 @@ export const explorerStoreModule = {
         dates: [],
         regions: [],
         countries: [],
+        languages: [],
+        languagesGroupedByCode: {},
         loading: 0,
-        selected: {
+        browseByCountry: {
             country: undefined,
             date: undefined,
             languageData: undefined,
-            languageMetadata: [],
             filters: {}
         }
     },
@@ -28,25 +29,23 @@ export const explorerStoreModule = {
             state.countries = [...countries];
         },
         saveSelectedCountry(state, country) {
-            state.selected.country = country;
+            state.browseByCountry.country = country;
         },
         saveSelectedDate(state, date) {
-            state.selected.date = date;
+            state.browseByCountry.date = date;
         },
         saveCountryData(state, data) {
-            state.selected.languageData = { ...data };
+            state.browseByCountry.languageData = { ...data };
         },
         saveLanguageMetadata(state, metadata) {
-            state.selected.languageMetadata = [
-                ...state.selected.languageMetadata,
-                ...metadata
-            ];
+            state.languages = uniqBy([...state.languages, ...metadata], "code");
+            state.languagesGroupedByCode = groupBy(state.languages, "code");
         },
         saveLoadingPercentage(state, percentage) {
             state.loading = percentage;
         },
         saveFilters(state, data) {
-            state.selected.filters = { ...data };
+            state.browseByCountry.filters = { ...data };
         }
     },
     actions: {
@@ -63,21 +62,21 @@ export const explorerStoreModule = {
         async getCountryData({ commit, state }) {
             commit("saveLoadingPercentage", 1);
             const data = await explorerService.getCountryData({
-                country: state.selected.country,
-                date: state.selected.date
+                country: state.browseByCountry.country,
+                date: state.browseByCountry.date
             });
             commit("saveCountryData", data);
 
-            const languages = groupBy(state.selected.languageMetadata, "code");
+            const languagesGroupedByCode = state.languagesGroupedByCode;
             const nLanguages = data.languages.length;
             let i = 0;
             let languageMetadata = [];
             for (let language of data.languages) {
                 i += 1;
-                if (!languages[language.code]) {
+                if (!languagesGroupedByCode[language.code]) {
                     let metadata = await explorerService.getLanguageData({
                         code: language.code,
-                        date: state.selected.date
+                        date: state.browseByCountry.date
                     });
                     languageMetadata.push(metadata);
                     await sleep(100);

@@ -32,14 +32,14 @@ export default {
             return this.$store.state.explorerStore.loading;
         },
         country: function() {
-            return this.$store.state.explorerStore.selected.country;
+            return this.$store.state.explorerStore.browseByCountry.country;
         },
         stats: function() {
             let store = this.$store.state.explorerStore;
             if (this.percentage !== 100) return;
-            let languageData = store.selected.languageData;
-            const meta = store.selected.languageMetadata;
-            const filters = store.selected.filters;
+            let languageData = store.browseByCountry.languageData;
+            const languagesGroupedByCode = store.languagesGroupedByCode;
+            const filters = store.browseByCountry.filters;
 
             if (languageData) {
                 this.resourceTypes = extractResourceTypes(languageData);
@@ -49,7 +49,7 @@ export default {
                 });
                 stats = stats.map(s => {
                     if (isEmpty(filters.languages)) {
-                        let language = meta.filter(l => l.code === s.code)[0];
+                        let language = languagesGroupedByCode[s.code][0];
                         if (language) s.name = language.name;
                         return s;
                     } else {
@@ -57,18 +57,14 @@ export default {
                             filters.action === "show" &&
                             includes(filters.languages, s.code)
                         ) {
-                            let language = meta.filter(
-                                l => l.code === s.code
-                            )[0];
+                            let language = languagesGroupedByCode[s.code][0];
                             if (language) s.name = language.name;
                             return s;
                         } else if (
                             filters.action === "hide" &&
                             !includes(filters.languages, s.code)
                         ) {
-                            let language = meta.filter(
-                                l => l.code === s.code
-                            )[0];
+                            let language = languagesGroupedByCode[s.code][0];
                             if (language) s.name = language.name;
                             return s;
                         }

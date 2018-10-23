@@ -38,15 +38,16 @@ export default {
         languages: function() {
             if (this.percentage !== 100) return;
             let store = this.$store.state.explorerStore;
-            let languages = store.selected.languageData.languages;
-            let meta = groupBy(store.selected.languageMetadata, "code");
-            languages = languages.map(language => {
-                language = {
-                    ...language,
-                    name: meta[language.code][0].name
-                };
-                return language;
-            });
+            let languagesGroupedByCode = store.languagesGroupedByCode;
+            let languages = store.browseByCountry.languageData.languages.map(
+                language => {
+                    language = {
+                        ...language,
+                        name: languagesGroupedByCode[language.code][0].name
+                    };
+                    return language;
+                }
+            );
             return orderBy(languages, "name");
         }
     },

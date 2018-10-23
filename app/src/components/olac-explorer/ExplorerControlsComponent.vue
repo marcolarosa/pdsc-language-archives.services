@@ -39,7 +39,8 @@ export default {
         selectedDate: {
             get: function() {
                 const store = this.$store.state.explorerStore;
-                if (store.selected.date) return store.selected.date;
+                if (store.browseByCountry.date)
+                    return store.browseByCountry.date;
                 let dates = store.dates;
                 const date = dates[dates.length - 1];
                 this.saveSelectedDate(date);
@@ -52,7 +53,8 @@ export default {
         selectedCountry: {
             get: function() {
                 const store = this.$store.state.explorerStore;
-                if (store.selected.country) return store.selected.country;
+                if (store.browseByCountry.country)
+                    return store.browseByCountry.country;
             },
             set: function(country) {
                 this.$router.push({

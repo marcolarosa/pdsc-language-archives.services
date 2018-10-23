@@ -67,7 +67,7 @@ export default {
             return this.$store.state.explorerStore.loading;
         },
         country: function() {
-            return this.$store.state.explorerStore.selected.country;
+            return this.$store.state.explorerStore.browseByCountry.country;
         },
         stats: function() {
             this.renderChart();
@@ -87,10 +87,9 @@ export default {
                 } catch (error) {}
             }
             if (this.percentage !== 100) return;
-            const languageData = this.$store.state.explorerStore.selected
-                .languageData;
-            const meta = this.$store.state.explorerStore.selected
-                .languageMetadata;
+            const store = this.$store.state.explorerStore;
+            const languageData = store.browseByCountry.languageData;
+            const languagesGroupedByCode = store.languagesGroupedByCode;
 
             let options = cloneDeep(this.options);
 
@@ -102,7 +101,7 @@ export default {
                     resourceTypes
                 });
 
-                const filters = this.$store.state.explorerStore.selected
+                const filters = this.$store.state.explorerStore.browseByCountry
                     .filters;
                 options.series = options.series.map(language => {
                     if (isEmpty(filters.languages)) {
@@ -125,7 +124,7 @@ export default {
 
                 if (this.chart) {
                     options.series = options.series.map(s => {
-                        let language = meta.filter(l => l.code === s.name)[0];
+                        let language = languagesGroupedByCode[s.name][0];
                         if (language) s.name = language.name;
                         return s;
                     });

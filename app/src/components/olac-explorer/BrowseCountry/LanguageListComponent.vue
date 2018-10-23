@@ -38,7 +38,7 @@ export default {
     },
     computed: {
         ...mapState({
-            country: state => state.explorerStore.selected.country
+            country: state => state.explorerStore.browseByCountry.country
         })
     }
 };
