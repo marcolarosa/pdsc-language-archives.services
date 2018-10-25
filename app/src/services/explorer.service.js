@@ -58,9 +58,5 @@ export default class ExplorerService {
         } catch (error) {
             return {};
         }
-<<<<<<< HEAD
-        return (await http.get(uri)).data.language.harvests[0].metadata;
-=======
->>>>>>> implement-language-browser
     }
 }
