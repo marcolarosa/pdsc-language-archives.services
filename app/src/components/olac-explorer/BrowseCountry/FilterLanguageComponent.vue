@@ -1,8 +1,8 @@
 <template>
     <div>
-        <div class="row my-2">
-            <div class="col-3">
-                <el-select v-model="action" @change="handleSelection">
+        <div class="row">
+            <div class="col-4">
+                <el-select v-model="action" @change="handleSelection" class="style-select">
                     <el-option key="show" label="Show only these languages" value="show"></el-option>
                     <el-option key="hide" label="Hide these languages" value="hide"></el-option>
                 </el-select>
@@ -38,34 +38,18 @@ export default {
         languages: function() {
             if (this.percentage !== 100) return;
             let store = this.$store.state.explorerStore;
-            let languagesGroupedByCode = store.languagesGroupedByCode;
-            let languages = store.browseByCountry.languageData.languages.map(
-                language => {
-                    language = {
-                        ...language,
-                        name: languagesGroupedByCode[language.code][0].name
-                    };
-                    return language;
-                }
-            );
+            let languages = store.browseByCountry.languages;
             return orderBy(languages, "name");
         }
     },
     methods: {
         handleSelection() {
-            this.$store.commit("explorerStore/saveFilters", {
-                action: this.action,
-                languages: this.selectedLanguages
-            });
-        },
-
-        addLanguage() {
-            let inputValue = this.inputValue;
-            if (inputValue) {
-                this.dynamicTags.push(inputValue);
-            }
-            this.inputVisible = false;
-            this.inputValue = "";
+            setTimeout(() => {
+                this.$store.commit("explorerStore/saveCountryFilters", {
+                    action: this.action,
+                    languages: this.selectedLanguages
+                });
+            }, 200);
         }
     }
 };

@@ -21,6 +21,10 @@
                     To read more about what we do
                     <a href="http://www.dynamicsoflanguage.edu.au" target="_blank">visit our main site.</a>
                 </p>
+                <p class="text-muted style-link">
+                    All material is provided under a 
+                    <a href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank">
+                    GNU/GPL General Public License</a> </p>
 
                 <!-- <div>
                     <el-carousel :interval="4000" type="card" height="340px">
@@ -207,6 +211,9 @@ export default {
 .style-image {
     width: 100%;
     height: auto;
+}
+.style-link {
+    font-size: 14px;
 }
 
 .el-carousel__item h5 {

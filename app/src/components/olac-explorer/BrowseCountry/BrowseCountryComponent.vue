@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import ControlsComponent from "../ExplorerControlsComponent.vue";
+import ControlsComponent from "./ControlsComponent.vue";
 import LanguageListComponent from "./LanguageListComponent.vue";
 
 export default {
@@ -26,7 +26,9 @@ export default {
         return {};
     },
     mounted() {
-        this.$store.dispatch("explorerStore/preload");
+        if (!this.$route.params.country) {
+            this.$store.commit("explorerStore/resetCountryState");
+        }
     }
 };
 </script>

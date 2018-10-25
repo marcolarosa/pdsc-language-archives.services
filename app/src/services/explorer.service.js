@@ -20,6 +20,16 @@ export default class ExplorerService {
         return (await http.get(uri)).data.countries;
     }
 
+    async getLanguages(date) {
+        let uri;
+        if (!date) {
+            uri = `/languages`;
+        } else {
+            uri = `/languages?date=${date}`;
+        }
+        return (await http.get(uri)).data.languages;
+    }
+
     async getCountryData({ country, date }) {
         let uri;
         if (!date) {
@@ -31,12 +41,26 @@ export default class ExplorerService {
     }
 
     async getLanguageData({ code, date }) {
-        let uri;
-        if (!date) {
-            uri = `/languages/${code}`;
-        } else {
-            uri = `/languages/${code}?date=${date}`;
+        let uri = `/languages/${code}?date=${date}`;
+        try {
+            let data = (await http.get(uri)).data;
+            return data.language.harvests[0].metadata;
+        } catch (error) {
+            return {};
         }
+    }
+
+    async getLanguageResources({ code, date }) {
+        let uri = `/languages/${code}/resources?date=${date}`;
+        try {
+            let data = (await http.get(uri)).data;
+            return data.language.resources;
+        } catch (error) {
+            return {};
+        }
+<<<<<<< HEAD
         return (await http.get(uri)).data.language.harvests[0].metadata;
+=======
+>>>>>>> implement-language-browser
     }
 }

@@ -29,6 +29,8 @@ const ExplorerComponent = () =>
     import(/* webpackChunkName: "group-explore" */ "components/olac-explorer/ExplorerComponent.vue");
 const ExplorerBrowseCountryComponent = () =>
     import(/* webpackChunkName: "group-explore" */ "components/olac-explorer/BrowseCountry/BrowseCountryComponent.vue");
+const ExplorerBrowseLanguageComponent = () =>
+    import(/* webpackChunkName: "group-explore" */ "components/olac-explorer/BrowseLanguage/BrowseLanguageComponent.vue");
 
 export const router = new VueRouter({
     mode: "history",
@@ -65,8 +67,19 @@ export const router = new VueRouter({
             children: [
                 {
                     path: "browse-country",
+                    name: "browseCountry",
                     component: ExplorerBrowseCountryComponent,
-                    children: [{ path: ":country" }]
+                    children: [
+                        { path: ":country", name: "browseCountrySelection" }
+                    ]
+                },
+                {
+                    path: "browse-language",
+                    name: "browseLanguage",
+                    component: ExplorerBrowseLanguageComponent,
+                    children: [
+                        { path: ":language", name: "browseLanguageSelection" }
+                    ]
                 }
             ]
         }

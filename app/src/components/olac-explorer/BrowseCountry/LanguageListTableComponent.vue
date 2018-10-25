@@ -6,6 +6,9 @@
             </div>
             <el-table :data="stats" style="width: 100%" height="250" v-if="stats">
                 <el-table-column prop="name" label="Name" width="150" fixed>
+                    <template slot-scope="scope">
+                        <router-link :to="getLanguageBrowseLink(scope.row.code)">{{scope.row.name}}</router-link>
+                    </template>
                 </el-table-column>
                 <el-table-column prop="code" label="Code" width="100" fixed>
                 </el-table-column>
@@ -37,48 +40,46 @@ export default {
         stats: function() {
             let store = this.$store.state.explorerStore;
             if (this.percentage !== 100) return;
-            let languageData = store.browseByCountry.languageData;
-            const languagesGroupedByCode = store.languagesGroupedByCode;
+            let languages = store.browseByCountry.languages;
             const filters = store.browseByCountry.filters;
 
-            if (languageData) {
-                this.resourceTypes = extractResourceTypes(languageData);
+            if (languages) {
+                this.resourceTypes = extractResourceTypes(languages);
                 let stats = tabulateStats({
-                    data: languageData,
+                    data: languages,
                     resourceTypes: this.resourceTypes
                 });
-                stats = stats.map(s => {
+                stats = stats.map(language => {
                     if (isEmpty(filters.languages)) {
-                        let language = languagesGroupedByCode[s.code][0];
-                        if (language) s.name = language.name;
-                        return s;
+                        return language;
                     } else {
                         if (
                             filters.action === "show" &&
-                            includes(filters.languages, s.code)
+                            includes(filters.languages, language.code)
                         ) {
-                            let language = languagesGroupedByCode[s.code][0];
-                            if (language) s.name = language.name;
-                            return s;
+                            return language;
                         } else if (
                             filters.action === "hide" &&
-                            !includes(filters.languages, s.code)
+                            !includes(filters.languages, language.code)
                         ) {
-                            let language = languagesGroupedByCode[s.code][0];
-                            if (language) s.name = language.name;
-                            return s;
+                            return language;
                         }
                     }
                 });
                 return orderBy(compact(stats), "name");
             }
         }
+    },
+    methods: {
+        getLanguageBrowseLink(code) {
+            return `/olac-explorer/browse-language/${code}`;
+        }
     }
 };
 
 function extractResourceTypes(data) {
     let types = {};
-    data.languages.forEach(language => {
+    data.forEach(language => {
         language.stats.forEach(type => {
             let key = Object.keys(type)[0];
             types[key] = "";
@@ -88,9 +89,10 @@ function extractResourceTypes(data) {
 }
 
 function tabulateStats({ data, resourceTypes }) {
-    return data.languages.map(language => {
+    return data.map(language => {
         let stats = {};
         stats.code = language.code;
+        stats.name = language.name;
         resourceTypes.forEach(type => {
             let value = {};
             value[type] = compact(language.stats.map(s => s[type]))[0] || 0;

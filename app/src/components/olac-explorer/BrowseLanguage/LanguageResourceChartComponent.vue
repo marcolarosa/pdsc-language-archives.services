@@ -1,6 +1,6 @@
 <template>
     <div>
-        <el-card class="box-card" v-if="country">
+        <el-card class="box-card">
             <div ref="chart"></div>
         </el-card>
     </div>
@@ -8,7 +8,16 @@
 
 <script>
 import { mapState } from "vuex";
-import { compact, cloneDeep, orderBy, includes, isEmpty } from "lodash";
+import { format } from "date-fns";
+import {
+    compact,
+    cloneDeep,
+    orderBy,
+    includes,
+    isEmpty,
+    flattenDeep,
+    uniq
+} from "lodash";
 import ApexCharts from "apexcharts";
 
 export default {
@@ -18,8 +27,7 @@ export default {
             options: {
                 chart: {
                     height: 350,
-                    type: "bar",
-                    stacked: true,
+                    type: "line",
                     toolbar: {
                         show: true
                     },
@@ -27,11 +35,7 @@ export default {
                         enabled: true
                     }
                 },
-                legend: {
-                    onItemClick: {
-                        toggleDataSeries: false
-                    }
-                },
+                legend: {},
                 responsive: [
                     {
                         breakpoint: 700,
@@ -53,7 +57,7 @@ export default {
                     type: "string"
                 },
                 title: {
-                    text: "Resource counts per language",
+                    text: "Data type resource counts over time",
                     align: "center"
                 },
                 fill: {
@@ -66,58 +70,38 @@ export default {
         percentage: function() {
             return this.$store.state.explorerStore.loading;
         },
-        country: function() {
-            return this.$store.state.explorerStore.browseByCountry.country;
+        dates: function() {
+            return this.$store.state.explorerStore.dates;
         },
-        stats: function() {
+        data: function() {
             this.renderChart();
         }
     },
     watch: {
-        stats: {}
+        data: {}
     },
     mounted() {
         this.renderChart();
     },
     methods: {
         renderChart() {
-            if (this.percentage === 1) {
-                try {
-                    this.chart.updateSeries([{ data: [] }]);
-                } catch (error) {}
+            if (this.percentage === 1 && this.chart) {
+                this.chart.updateSeries([{ data: [] }]);
+                return;
             }
             if (this.percentage !== 100) return;
             const store = this.$store.state.explorerStore;
-            const languages = store.browseByCountry.languages;
+            const harvests = store.browseByLanguage.harvests;
             let options = cloneDeep(this.options);
-            if (languages) {
-                let resourceTypes = extractResourceTypes(languages);
-                options.xaxis.categories = resourceTypes;
+            if (harvests) {
+                let resourceTypes = extractResourceTypes(harvests);
+                options.xaxis.categories = this.dates.map(d =>
+                    format(d, "Do MMM YYYY")
+                );
                 options.series = prepareSeries({
-                    data: languages,
+                    data: harvests,
                     resourceTypes
                 });
-
-                const filters = store.browseByCountry.filters;
-                options.series = options.series.map(language => {
-                    if (isEmpty(filters.languages)) {
-                        return language;
-                    } else {
-                        if (
-                            filters.action === "show" &&
-                            includes(filters.languages, language.code)
-                        ) {
-                            return language;
-                        } else if (
-                            filters.action === "hide" &&
-                            !includes(filters.languages, language.code)
-                        ) {
-                            return language;
-                        }
-                    }
-                });
-                options.series = compact(options.series);
-
                 if (this.chart) {
                     if (isEmpty(options.series))
                         options.series = [{ data: [] }];
@@ -138,29 +122,28 @@ export default {
 };
 
 function extractResourceTypes(data) {
-    let types = {};
+    let types = [];
     data.forEach(language => {
-        language.stats.forEach(type => {
-            let key = Object.keys(type)[0];
-            types[key] = "";
-        });
+        if (language.resources) types.push(Object.keys(language.resources));
     });
-    return Object.keys(types).sort();
+    return uniq(flattenDeep(types)).sort();
 }
 
 function prepareSeries({ data, resourceTypes }) {
-    return data.map(language => {
-        let stats = {
-            name: language.name,
-            code: language.code,
-            data: []
-        };
-        resourceTypes.forEach(type => {
-            let value = compact(language.stats.map(s => s[type]))[0] || 0;
-            stats.data.push(value);
+    let series = [];
+    for (let type of resourceTypes) {
+        series.push({
+            name: type,
+            data: data.map(language => {
+                if (language.resources && language.resources[type]) {
+                    return language.resources[type].count;
+                } else {
+                    return 0;
+                }
+            })
         });
-        return stats;
-    });
+    }
+    return series;
 }
 </script>
 

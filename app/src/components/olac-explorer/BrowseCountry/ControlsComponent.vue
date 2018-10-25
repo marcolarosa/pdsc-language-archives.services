@@ -2,7 +2,7 @@
     <div>
         <div class="row">
             <div class="col-4">
-                <el-select v-model="selectedCountry" placeholder="Select a country" filterable @change="saveSelectedCountry">
+                <el-select v-model="selectedCountry" class="style-select" placeholder="Select a country" filterable @change="saveSelectedCountry">
                     <el-option v-for="country in countries" :key="country" :label="country" :value="country">
                     </el-option>
                 </el-select>
@@ -43,7 +43,6 @@ export default {
                     return store.browseByCountry.date;
                 let dates = store.dates;
                 const date = dates[dates.length - 1];
-                this.saveSelectedDate(date);
                 return date;
             },
             set: function(date) {
@@ -60,7 +59,6 @@ export default {
                 this.$router.push({
                     path: `/olac-explorer/browse-country/${country}`
                 });
-                this.saveSelectedCountry(country);
             }
         },
         countries: function() {
@@ -70,17 +68,13 @@ export default {
             return this.$store.state.explorerStore.dates;
         }
     },
-    mounted() {
-        if (this.$route.params.country)
-            this.saveSelectedCountry(this.$route.params.country);
-    },
     methods: {
         saveSelectedCountry(country) {
             this.$store.commit("explorerStore/saveSelectedCountry", country);
             this.loadCountryData();
         },
         saveSelectedDate(date) {
-            this.$store.commit("explorerStore/saveSelectedDate", date);
+            this.$store.commit("explorerStore/saveSelectedDateCountry", date);
             this.loadCountryData();
         },
         loadCountryData() {
@@ -92,4 +86,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.style-select {
+    width: 100%;
+}
 </style>

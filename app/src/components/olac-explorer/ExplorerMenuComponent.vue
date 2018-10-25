@@ -17,6 +17,9 @@
         <el-menu-item index="1" route="/olac-explorer/browse-country">
             <span>Browse Country Data</span>
         </el-menu-item>
+        <el-menu-item index="1" route="/olac-explorer/browse-language">
+            <span>Browse Language Data</span>
+        </el-menu-item>
     </el-menu>
 </template>
 

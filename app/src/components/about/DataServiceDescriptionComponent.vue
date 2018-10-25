@@ -7,10 +7,6 @@
             The <router-link to="/about/olac-vis">OLAC visualisation</router-link> was an acceptable first attempt at making the data
             listed at the language archives site accessible but it was not without issues. The technology underpinning the site
             proved to be slow and there was no sense of how the underlying data was changing with time.
-
-            An earlier version of this work, the <router-link to="/about/olac-vis">OLAC visualisation</router-link>, was an acceptable
-            first attempt at making the data listed by OLAC accessible, but it was not without issues. The technology underpinning our
-            site proved to be slow and there was no sense of how the underlying data was changing with time.
         </p>
         <p>
             Accordingly, the aim of the current project is create a service which presents OLAC data in a summary form, and then
