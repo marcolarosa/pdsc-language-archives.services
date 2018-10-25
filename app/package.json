@@ -6,7 +6,7 @@
     "scripts": {
         "develop": "npm install && node_modules/.bin/webpack-dev-server --hot --config webpack.develop.js",
         "unitTests": "node_modules/mocha/bin/mocha -w -r jsdom-global/register 'src/**/*.spec.js'",
-        "build:production": "node_modules/.bin/webpack --config webpack.build-production.js"
+        "build:production": "npm install && node_modules/.bin/webpack --config webpack.build-production.js"
     },
     "author": "Marco La Rosa",
     "license": "ISC",
