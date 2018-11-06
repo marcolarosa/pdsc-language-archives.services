@@ -27,9 +27,10 @@ export default {
             let message = this.$store.state.explorerStore.preload;
             if (this.notification) this.notification.close();
             this.notification = this.$notify({
-                message,
-                type: "success",
-                position: "top-right"
+                title: message,
+                type: "info",
+                position: "top-right",
+                showClose: false
             });
             if (message === "done") {
                 this.notification.close();
