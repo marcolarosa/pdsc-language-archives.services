@@ -24,6 +24,8 @@ const DataServiceDescriptionComponent = () =>
     import(/* webpackChunkName: "group-apps" */ "components/about/DataServiceDescriptionComponent.vue");
 const WordgenDescriptionComponent = () =>
     import(/* webpackChunkName: "group-apps" */ "components/about/WordgenDescriptionComponent.vue");
+const RaspberryPiDescriptionComponent = () =>
+    import(/* webpackChunkName: "group-apps" */ "components/about/RaspberryPiDescriptionComponent.vue");
 
 const ExplorerComponent = () =>
     import(/* webpackChunkName: "group-explore" */ "components/olac-explorer/ExplorerComponent.vue");
@@ -60,6 +62,10 @@ export const router = new VueRouter({
                 {
                     path: "/about/wordgen",
                     component: WordgenDescriptionComponent
+                },
+                {
+                    path: "/about/pi",
+                    component: RaspberryPiDescriptionComponent
                 }
             ]
         },

@@ -4,10 +4,26 @@
             <div class="col">
                 <p>
                     The Centre of Excellence for the Dynamics of Language is focussed on investigating
-                    how languages <a href="http://www.dynamicsoflanguage.edu.au/research/language-diversity/" target="_blank">vary</a>,
-                    how we learn <a href="http://www.dynamicsoflanguage.edu.au/research/language-learning/" target="_blank">them</a>,
-                    how we <a href="http://www.dynamicsoflanguage.edu.au/research/language-processing/" target="_blank">process</a>
-                    them and how they <a href="http://www.dynamicsoflanguage.edu.au/research/language-evolution/" target="_blank">evolve</a>.
+                    how languages
+                    <a
+                        href="http://www.dynamicsoflanguage.edu.au/research/language-diversity/"
+                        target="_blank"
+                    >vary</a>,
+                    how we learn
+                    <a
+                        href="http://www.dynamicsoflanguage.edu.au/research/language-learning/"
+                        target="_blank"
+                    >them</a>,
+                    how we
+                    <a
+                        href="http://www.dynamicsoflanguage.edu.au/research/language-processing/"
+                        target="_blank"
+                    >process</a>
+                    them and how they
+                    <a
+                        href="http://www.dynamicsoflanguage.edu.au/research/language-evolution/"
+                        target="_blank"
+                    >evolve</a>.
                 </p>
                 <p>
                     A key aspect of our work is the use and development of cutting edge technologies
@@ -19,32 +35,24 @@
                 </p>
                 <p>
                     To read more about what we do
-                    <a href="http://www.dynamicsoflanguage.edu.au" target="_blank">visit our main site.</a>
+                    <a
+                        href="http://www.dynamicsoflanguage.edu.au"
+                        target="_blank"
+                    >visit our main site.</a>
                 </p>
                 <p class="text-muted style-link">
-                    All material is provided under a 
-                    <a href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank">
-                    GNU/GPL General Public License</a> </p>
-
-                <!-- <div>
-                    <el-carousel :interval="4000" type="card" height="340px">
-                        <el-carousel-item v-for="item in items" :key="item.id">
-                            <router-link :to="item.uri">
-                                <h5>{{ item.name }}</h5>
-                                <img :src="item.image" class="style-image mx-auto d-block">
-                            </router-link>
-                        </el-carousel-item>
-                    </el-carousel>
-                </div>
-                <div class="text-center"><em>(click the tiles to see more information)</em></div> -->
+                    All material is provided under a
+                    <a
+                        href="https://www.gnu.org/licenses/gpl-3.0.en.html"
+                        target="_blank"
+                    >GNU/GPL General Public License</a>
+                </p>
 
                 <div class="row">
                     <div class="col-4">
                         <el-card class="box-card">
                             <div slot="header">
-                                <router-link :to="items[0].uri">
-                                    {{items[0].name}}
-                                </router-link>
+                                <router-link :to="items[0].uri">{{items[0].name}}</router-link>
                             </div>
                             <router-link :to="items[0].uri">
                                 <img :src="items[0].image" class="style-image mx-auto d-block">
@@ -54,9 +62,7 @@
                     <div class="col-4">
                         <el-card class="box-card">
                             <div slot="header">
-                                <router-link :to="items[1].uri">
-                                    {{items[1].name}}
-                                </router-link>
+                                <router-link :to="items[1].uri">{{items[1].name}}</router-link>
                             </div>
                             <router-link :to="items[1].uri">
                                 <img :src="items[1].image" class="style-image mx-auto d-block">
@@ -66,9 +72,7 @@
                     <div class="col-4">
                         <el-card class="box-card">
                             <div slot="header">
-                                <router-link :to="items[2].uri">
-                                    {{items[2].name}}
-                                </router-link>
+                                <router-link :to="items[2].uri">{{items[2].name}}</router-link>
                             </div>
                             <router-link :to="items[2].uri">
                                 <img :src="items[2].image" class="style-image mx-auto d-block">
@@ -80,9 +84,7 @@
                     <div class="col-4">
                         <el-card class="box-card">
                             <div slot="header">
-                                <router-link :to="items[3].uri">
-                                    {{items[3].name}}
-                                </router-link>
+                                <router-link :to="items[3].uri">{{items[3].name}}</router-link>
                             </div>
                             <router-link :to="items[3].uri">
                                 <img :src="items[3].image" class="style-image mx-auto d-block">
@@ -92,9 +94,7 @@
                     <div class="col-4">
                         <el-card class="box-card">
                             <div slot="header">
-                                <router-link :to="items[4].uri">
-                                    {{items[4].name}}
-                                </router-link>
+                                <router-link :to="items[4].uri">{{items[4].name}}</router-link>
                             </div>
                             <router-link :to="items[4].uri">
                                 <img :src="items[4].image" class="style-image mx-auto d-block">
@@ -104,9 +104,7 @@
                     <div class="col-4">
                         <el-card class="box-card">
                             <div slot="header">
-                                <router-link :to="items[5].uri">
-                                    {{items[5].name}}
-                                </router-link>
+                                <router-link :to="items[5].uri">{{items[5].name}}</router-link>
                             </div>
                             <router-link :to="items[5].uri">
                                 <img :src="items[5].image" class="style-image mx-auto d-block">
@@ -116,30 +114,41 @@
                 </div>
                 <div class="row mt-4">
                     <div class="col-4">
-                        <div slot="header">
+                        <el-card class="box-card">
+                            <div slot="header">
+                                <router-link :to="items[6].uri">{{items[6].name}}</router-link>
+                            </div>
                             <router-link :to="items[6].uri">
-                                {{items[6].name}}
+                                <img :src="items[6].image" class="style-image mx-auto d-block">
                             </router-link>
-                        </div>
-                        <router-link :to="items[6].uri">
-                            <img :src="items[6].image" class="style-image mx-auto d-block">
-                        </router-link>
+                        </el-card>
                     </div>
                     <div class="col-4">
+                        <el-card class="box-card">
+                            <div slot="header">
+                                <router-link :to="items[7].uri">{{items[7].name}}</router-link>
+                            </div>
+                            <router-link :to="items[7].uri">
+                                <img :src="items[7].image" class="style-image mx-auto d-block">
+                            </router-link>
+                        </el-card>
                     </div>
-                    <div class="col-4">
-                    </div>
+                    <div class="col-4"></div>
                 </div>
             </div>
         </div>
         <div class="row pad-funding-note">
             <div class="col">
-                <p class='text-center'>
+                <p class="text-center">
                     <em>
                         <strong>
-                            The projects shown in this site are led by <a href="http://nthieberger.net" target="_blank">Nick Thieberger</a> and
-                            have been funded as part of the<br />
-                            ARC Centre of Excellence for the Dynamics of Language (ARC grant CE140100041).
+                            The projects shown in this site are led by
+                            <a
+                                href="http://nthieberger.net"
+                                target="_blank"
+                            >Nick Thieberger</a> and
+                            have been funded as part of the
+                            <br>ARC Centre of Excellence for the Dynamics of Language (ARC grant CE140100041).
                         </strong>
                     </em>
                 </p>
@@ -194,6 +203,12 @@ export default {
                     name: "Word Generator",
                     image: "assets/images/wordgen.png",
                     uri: "/about/wordgen"
+                },
+                {
+                    id: 7,
+                    name: "Raspberry Pi as a Repatriation Device",
+                    image: "assets/images/raspberrypi-ar21.svg",
+                    uri: "/about/pi"
                 }
             ]
         };
