@@ -6,19 +6,32 @@
             </div>
         </div>
         <div class="row">
+            <div class="col">
+                <p
+                    v-if="!selectedLanguage"
+                >Please select a language. Start typing to see a list of choices.</p>
+            </div>
+        </div>
+        <div class="row">
             <div class="col my-2">
-                <el-card class="box-card">
+                <el-card class="box-card" v-if="selectedLanguage">
                     <div slot="header" class="clearfix">
                         <span>{{metadata.name}}</span>
                     </div>
                     <div class="row">
                         <div class="col" v-if="metadata.url">
-                            <a :href="metadata.url" target="_blank">View this item at the Open Language Archives Community site</a>
+                            <a
+                                :href="metadata.url"
+                                target="_blank"
+                            >View this item at the Open Language Archives Community site</a>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col" v-if="metadata.url">
-                            <a :href="glottologUrl" target="_blank">View this item at the Glottolog site</a>
+                            <a
+                                :href="glottologUrl"
+                                target="_blank"
+                            >View this item at the Glottolog site</a>
                         </div>
                     </div>
                 </el-card>
@@ -26,12 +39,12 @@
         </div>
         <div class="row">
             <div class="col my-2">
-                <language-resource-chart-component />
+                <language-resource-chart-component v-if="selectedLanguage"/>
             </div>
         </div>
         <div class="row">
             <div class="col my-2">
-                <language-resource-table-component />
+                <language-resource-table-component v-if="selectedLanguage"/>
             </div>
         </div>
     </div>
@@ -71,6 +84,9 @@ export default {
             return `https://glottolog.org/resource/languoid/id/${
                 this.metadata.glotto_id
             }`;
+        },
+        selectedLanguage: function() {
+            return this.$store.state.explorerStore.browseByLanguage.code;
         }
     },
     mounted() {

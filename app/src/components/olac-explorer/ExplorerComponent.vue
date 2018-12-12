@@ -1,10 +1,10 @@
 <template>
     <div class="style-container">
         <div class="style-menu">
-            <explorer-menu-component />
+            <explorer-menu-component/>
         </div>
         <div class="style-content p-3">
-            <router-view></router-view>
+            <router-view v-if="loadRouterView"></router-view>
         </div>
     </div>
 </template>
@@ -19,7 +19,8 @@ export default {
     },
     data() {
         return {
-            notification: undefined
+            notification: undefined,
+            loadRouterView: false
         };
     },
     computed: {
@@ -33,7 +34,10 @@ export default {
                 showClose: false
             });
             if (message === "done") {
-                this.notification.close();
+                setTimeout(() => {
+                    this.notification.close();
+                    this.loadRouterView = true;
+                }, 1000);
             }
             return message;
         }
@@ -44,31 +48,31 @@ export default {
     created() {
         (async () => {
             await this.$store.dispatch("explorerStore/preload");
-            if (
-                (includes[("browseCountry", "browseCountrySelection")],
-                this.$route.name)
-            ) {
-                if (this.$route.params.country) {
-                    this.$store.commit(
-                        "explorerStore/saveSelectedCountry",
-                        this.$route.params.country
-                    );
-                    this.$store.dispatch("explorerStore/getCountryData");
-                }
-            }
+            // if (
+            //     (includes[("browseCountry", "browseCountrySelection")],
+            //     this.$route.name)
+            // ) {
+            //     if (this.$route.params.country) {
+            //         this.$store.commit(
+            //             "explorerStore/saveSelectedCountry",
+            //             this.$route.params.country
+            //         );
+            //         this.$store.dispatch("explorerStore/getCountryData");
+            //     }
+            // }
 
-            if (
-                (includes[("browseLanguage", "browseLanguageSelection")],
-                this.$route.name)
-            ) {
-                if (this.$route.params.language) {
-                    this.$store.commit(
-                        "explorerStore/saveSelectedLanguageCode",
-                        this.$route.params.language
-                    );
-                    this.$store.dispatch("explorerStore/getLanguageData");
-                }
-            }
+            // if (
+            //     (includes[("browseLanguage", "browseLanguageSelection")],
+            //     this.$route.name)
+            // ) {
+            //     if (this.$route.params.language) {
+            //         this.$store.commit(
+            //             "explorerStore/saveSelectedLanguageCode",
+            //             this.$route.params.language
+            //         );
+            //         this.$store.dispatch("explorerStore/getLanguageData");
+            //     }
+            // }
         })();
     }
 };

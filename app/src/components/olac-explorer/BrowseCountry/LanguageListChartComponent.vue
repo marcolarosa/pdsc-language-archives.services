@@ -118,9 +118,8 @@ export default {
                 });
                 options.series = compact(options.series);
 
+                if (isEmpty(options.series)) options.series = [{ data: [] }];
                 if (this.chart) {
-                    if (isEmpty(options.series))
-                        options.series = [{ data: [] }];
                     options.series = orderBy(options.series, "name");
                     this.chart.updateSeries(options.series);
                 } else {

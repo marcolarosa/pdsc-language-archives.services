@@ -7,6 +7,7 @@ This is the base website and associated docker container code and stack configur
     - [Building the website container](#building-the-website-container)
     - [Helper scripts](#helper-scripts)
         - [Setting up the swarm](#setting-up-the-swarm)
+        - [Updating a service](#updating-a-service)
 
 ## Developing the website
 
@@ -42,3 +43,9 @@ Docker compose can deploy the stack to a swarm. In this case the swarm is the la
 ```
 
 This will initialise the swarm and join the current node as a manager. After that, `docker stack ls` should show an empty swarm.
+
+### Updating a service
+
+```
+$ docker service update --image pdsc/api-service-production:latest --update-parallelism 1 --force pdsc-webstack_api-service
+```

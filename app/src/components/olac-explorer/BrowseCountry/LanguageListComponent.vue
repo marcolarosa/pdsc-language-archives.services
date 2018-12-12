@@ -2,18 +2,18 @@
     <div>
         <div class="row my-2">
             <div class="col">
-                <filter-language-component />
+                <filter-language-component/>
             </div>
         </div>
         <div class="row my-2">
             <div class="col">
-                <language-list-table-component />
+                <language-list-table-component v-if="country"/>
                 <p v-if="!country">Please select a country from the dropdown.</p>
             </div>
         </div>
         <div class="row my-2">
             <div class="col">
-                <language-list-chart-component />
+                <language-list-chart-component v-if="country"/>
             </div>
         </div>
     </div>

@@ -135,6 +135,7 @@ export const explorerStoreModule = {
             for (let language of data.languages) {
                 i += 1;
                 if (
+                    !languagesGroupedByCode[language.code] ||
                     !languagesGroupedByCode[language.code][0].metadata ||
                     languagesGroupedByCode[language.code][0].date !==
                         state.browseByCountry.date

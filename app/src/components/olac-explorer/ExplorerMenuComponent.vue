@@ -1,5 +1,5 @@
 <template>
-    <el-menu default-active="1" mode="vertical" router="true" class="style-menu">
+    <el-menu mode="vertical" :router="true" class="style-menu">
         <div class="row">
             <div class="col text-center py-2">
                 <router-link to="/">
@@ -9,18 +9,30 @@
         </div>
 
         <div class="row">
-            <div class="col text-center py-2">
-                Language Archives<br /> Explorer
+            <div class="col text-center py-2">Language Archives
+                <br>Explorer
             </div>
         </div>
-        <hr />
-        <el-menu-item index="1" route="/olac-explorer/explore-country">
+        <hr>
+        <el-menu-item
+            index="1"
+            route="/olac-explorer/explore-country"
+            :class="{'is-active': activePath.exploreCountry }"
+        >
             <span>Explore Country</span>
         </el-menu-item>
-        <el-menu-item index="2" route="/olac-explorer/browse-country">
+        <el-menu-item
+            index="2"
+            route="/olac-explorer/browse-country"
+            :class="{'is-active': activePath.browseCountry }"
+        >
             <span>Browse Country Data</span>
         </el-menu-item>
-        <el-menu-item index="3" route="/olac-explorer/browse-language">
+        <el-menu-item
+            index="3"
+            route="/olac-explorer/browse-language"
+            :class="{'is-active': activePath.browseLanguage }"
+        >
             <span>Browse Language Data</span>
         </el-menu-item>
     </el-menu>
@@ -29,7 +41,40 @@
 <script>
 export default {
     data() {
-        return {};
+        return {
+            activePath: {
+                exploreCountry: undefined,
+                browseCountry: undefined,
+                browseLanguage: undefined
+            }
+        };
+    },
+    mounted() {
+        this.setActivePath();
+    },
+    watch: {
+        "$route.path": function() {
+            this.setActivePath();
+        }
+    },
+    methods: {
+        setActivePath() {
+            this.activePath.exploreCountry = this.$route.path.match(
+                "/olac-explorer/explore-country"
+            )
+                ? true
+                : false;
+            this.activePath.browseCountry = this.$route.path.match(
+                "/olac-explorer/browse-country"
+            )
+                ? true
+                : false;
+            this.activePath.browseLanguage = this.$route.path.match(
+                "/olac-explorer/browse-language"
+            )
+                ? true
+                : false;
+        }
     }
 };
 </script>

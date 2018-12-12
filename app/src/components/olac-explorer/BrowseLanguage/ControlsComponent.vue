@@ -2,22 +2,34 @@
     <div>
         <div class="row">
             <div class="col-4">
-                <el-select v-model="selectedLanguage" 
+                <el-select
+                    v-model="selectedLanguage"
                     class="style-select"
-                    placeholder="Select a language" 
-                    clearable 
-                    filterable 
-                    remote 
-                    reserve-keyword 
-                    :remote-method="lookupLanguage" 
-                    @change="saveSelectedLanguage" 
-                    :disabled="languages.length === 0">
-                    <el-option v-for="language in languageMatches" :key="language.code" :label="language.name" :value="language.code">
-                    </el-option>
+                    placeholder="Select a language"
+                    clearable
+                    filterable
+                    remote
+                    reserve-keyword
+                    :remote-method="lookupLanguage"
+                    @change="saveSelectedLanguage"
+                    :disabled="languages.length === 0"
+                >
+                    <el-option
+                        v-for="language in languageMatches"
+                        :key="language.code"
+                        :label="language.name"
+                        :value="language.code"
+                    ></el-option>
                 </el-select>
             </div>
             <div class="col-4">
-                <el-progress :text-inside="true" :stroke-width="18" :percentage="percentage" status="success" v-if="percentage"></el-progress>
+                <el-progress
+                    :text-inside="true"
+                    :stroke-width="18"
+                    :percentage="percentage"
+                    status="success"
+                    v-if="percentage"
+                ></el-progress>
             </div>
         </div>
     </div>
