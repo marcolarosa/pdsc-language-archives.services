@@ -86,11 +86,11 @@ export default {
     methods: {
         lookupLanguage(text) {
             if (text.length < 2) return [];
-            const re = new RegExp(text, "gi");
-            let list = this.languages.map(language => {
-                if (re.exec(language.name)) return language;
-            });
-            this.languageMatches = compact(list);
+            const re = new RegExp(text, "i");
+            let list = this.languages.filter(language =>
+                re.exec(language.name)
+            );
+            this.languageMatches = list;
         },
         saveSelectedLanguage(code) {
             this.$store.commit("explorerStore/saveSelectedLanguageCode", code);
