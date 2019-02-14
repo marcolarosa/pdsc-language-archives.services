@@ -85,6 +85,7 @@ export default {
     },
     methods: {
         lookupLanguage(text) {
+            if (text.length < 2) return [];
             const re = new RegExp(text, "gi");
             let list = this.languages.map(language => {
                 if (re.exec(language.name)) return language;
