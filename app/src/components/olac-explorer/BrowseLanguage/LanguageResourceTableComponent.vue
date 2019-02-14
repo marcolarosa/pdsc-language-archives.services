@@ -3,24 +3,27 @@
         <el-card class="box-card">
             <div class="row">
                 <div class="col">
-                    <el-select v-model="selectedDate" placeholder="Select a date" @change="loadTabData">
-                        <el-option v-for="date in dates" :key="date" :label="date" :value="date">
-                        </el-option>
+                    <el-select
+                        v-model="selectedDate"
+                        placeholder="Select a date"
+                        @change="loadTabData"
+                    >
+                        <el-option v-for="date in dates" :key="date" :label="date" :value="date"></el-option>
                     </el-select>
                 </div>
                 <div class="col">
                     <el-input placeholder="Filter resources" v-model="filter" @change="loadTabData"></el-input>
                 </div>
                 <div class="col">
-                    <el-pagination 
-                        class="float-right" 
-                        layout="sizes, prev, pager, next" 
-                        :page-sizes="[5, 10, 20, 50]" 
-                        :page-size="5" 
-                        :total="totalResources" 
+                    <el-pagination
+                        class="float-right"
+                        layout="sizes, prev, pager, next"
+                        :page-sizes="[5, 10, 20, 50]"
+                        :page-size="5"
+                        :total="totalResources"
                         @size-change="changePageSize"
-                        @current-change="changePage">
-                    </el-pagination>
+                        @current-change="changePage"
+                    ></el-pagination>
                 </div>
             </div>
             <div class="row">
