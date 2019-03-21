@@ -16,6 +16,8 @@ const NabuDescriptionComponent = () =>
     import(/* webpackChunkName: "group-apps" */ "components/about/NabuDescriptionComponent.vue");
 const NabuCollectionViewerDescriptionComponent = () =>
     import(/* webpackChunkName: "group-apps" */ "components/about/NabuCollectionViewerDescriptionComponent.vue");
+const MobileCollectionViewerDescriptionComponent = () =>
+    import(/* webpackChunkName: "group-apps" */ "components/about/MobileCollectionViewerDescriptionComponent.vue");
 const AngularOlacVisComponent = () =>
     import(/* webpackChunkName: "group-apps" */ "components/about/AngularOlacVisComponent.vue");
 const DataLoaderDescriptionComponent = () =>
@@ -49,6 +51,10 @@ export const router = new VueRouter({
                 {
                     path: "/about/nabu-viewer",
                     component: NabuCollectionViewerDescriptionComponent
+                },
+                {
+                    path: "/about/mobile-viewer",
+                    component: MobileCollectionViewerDescriptionComponent
                 },
                 { path: "/about/olac-vis", component: AngularOlacVisComponent },
                 {

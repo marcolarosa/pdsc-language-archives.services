@@ -176,36 +176,42 @@ export default {
                 },
                 {
                     id: 2,
+                    name: "Nabu Collection Mobile Viewer",
+                    image: "assets/images/mobile-viewer1.jpg",
+                    uri: "/about/mobile-viewer"
+                },
+                {
+                    id: 3,
                     name: "Language Archives Data Visualisation",
                     image: "assets/images/olacvis.jpg",
                     uri: "/about/olac-vis"
                 },
                 {
-                    id: 3,
+                    id: 4,
                     name: "Language Archives Explorer",
                     image: "assets/images/olac-explorer.png",
                     uri: "/olac-explorer/explore-country"
                 },
                 {
-                    id: 4,
+                    id: 5,
                     name: "Language Archives Data Service",
                     image: "assets/images/olacdata.jpg",
                     uri: "/about/data-service"
                 },
                 {
-                    id: 5,
+                    id: 6,
                     name: "Data Loader",
                     image: "assets/images/dataloader.jpg",
                     uri: "/about/data-loader"
                 },
                 {
-                    id: 6,
+                    id: 7,
                     name: "Word Generator",
                     image: "assets/images/wordgen.png",
                     uri: "/about/wordgen"
                 },
                 {
-                    id: 7,
+                    id: 8,
                     name: "Raspberry Pi as a Repatriation Device",
                     image: "assets/images/raspberrypi-ar21.svg",
                     uri: "/about/pi"
