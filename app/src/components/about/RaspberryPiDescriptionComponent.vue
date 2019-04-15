@@ -1,5 +1,5 @@
 <template>
-    <el-card class="box-card style-card" shadow="never">
+    <el-card class="box-card style-card" shadow="never" ref="top">
         <div slot="header" class="clearfix">
             <h4>
                 Setting up a
@@ -87,6 +87,16 @@
 </template>
 
 <script>
+import VueScrollTo from "vue-scrollto";
+
+export default {
+    data() {
+        return {};
+    },
+    mounted() {
+        VueScrollTo.scrollTo(this.$refs["top"], 100, {});
+    }
+};
 </script>
 
 <style lang="scss" scoped>
