@@ -2,7 +2,7 @@
 body {
     background-color: $background-color;
     height: 100vh;
-    margin: 0;
+    padding: 30px;
     width: 100vw;
 }
 
@@ -25,4 +25,27 @@ a:visited {
 a:hover,
 a:active {
     text-decoration: underline;
+}
+
+.style-tile {
+    min-width: calc(100vw - 60px);
+    max-width: calc(100vw - 60px);
+}
+@media only screen and (min-width: 600px) {
+    .style-tile {
+        max-width: calc((100vw / 2) - 50px);
+        min-width: calc((100vw / 2) - 50px);
+    }
+}
+@media only screen and (min-width: 900px) {
+    .style-tile {
+        max-width: calc((100vw / 3) - 60px);
+        min-width: calc((100vw / 3) - 60px);
+    }
+}
+
+.style-tile-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

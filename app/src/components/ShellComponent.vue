@@ -1,9 +1,7 @@
 <template>
     <div>
-        <div class="container">
-            <site-header-component></site-header-component>
-            <router-view></router-view>
-        </div>
+        <site-header-component></site-header-component>
+        <router-view></router-view>
     </div>
 </template>
 

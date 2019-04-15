@@ -6,7 +6,7 @@
 
 <script>
 export default {
-    el: '#app'
+    el: "#app"
 };
 </script>
 

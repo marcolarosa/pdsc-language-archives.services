@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="remove-padding">
         <div class="row">
             <div class="col">
                 <p>
@@ -48,102 +48,17 @@
                     >GNU/GPL General Public License</a>
                 </p>
 
-                <div class="row">
-                    <div class="col-4">
-                        <el-card class="box-card">
+                <div v-masonry transition-duration="0s" item-selector=".item">
+                    <div v-masonry-tile class="item" v-for="(item, idx) in items" :key="idx">
+                        <el-card class="style-tile">
                             <div slot="header">
-                                <router-link :to="items[0].uri">{{items[0].name}}</router-link>
+                                <router-link :to="item.uri">{{item.name}}</router-link>
                             </div>
-                            <router-link :to="items[0].uri">
-                                <img :src="items[0].image" class="style-image mx-auto d-block">
+                            <router-link :to="item.uri">
+                                <img :src="item.image" class="style-image mx-auto d-block">
                             </router-link>
                         </el-card>
                     </div>
-                    <div class="col-4">
-                        <el-card class="box-card">
-                            <div slot="header">
-                                <router-link :to="items[1].uri">{{items[1].name}}</router-link>
-                            </div>
-                            <router-link :to="items[1].uri">
-                                <img :src="items[1].image" class="style-image mx-auto d-block">
-                            </router-link>
-                        </el-card>
-                    </div>
-                    <div class="col-4">
-                        <el-card class="box-card">
-                            <div slot="header">
-                                <router-link :to="items[2].uri">{{items[2].name}}</router-link>
-                            </div>
-                            <router-link :to="items[2].uri">
-                                <img :src="items[2].image" class="style-image mx-auto d-block">
-                            </router-link>
-                        </el-card>
-                    </div>
-                </div>
-                <div class="row mt-4">
-                    <div class="col-4">
-                        <el-card class="box-card">
-                            <div slot="header">
-                                <router-link :to="items[3].uri">{{items[3].name}}</router-link>
-                            </div>
-                            <router-link :to="items[3].uri">
-                                <img :src="items[3].image" class="style-image mx-auto d-block">
-                            </router-link>
-                        </el-card>
-                    </div>
-                    <div class="col-4">
-                        <el-card class="box-card">
-                            <div slot="header">
-                                <router-link :to="items[4].uri">{{items[4].name}}</router-link>
-                            </div>
-                            <router-link :to="items[4].uri">
-                                <img :src="items[4].image" class="style-image mx-auto d-block">
-                            </router-link>
-                        </el-card>
-                    </div>
-                    <div class="col-4">
-                        <el-card class="box-card">
-                            <div slot="header">
-                                <router-link :to="items[5].uri">{{items[5].name}}</router-link>
-                            </div>
-                            <router-link :to="items[5].uri">
-                                <img :src="items[5].image" class="style-image mx-auto d-block">
-                            </router-link>
-                        </el-card>
-                    </div>
-                </div>
-                <div class="row mt-4">
-                    <div class="col-4">
-                        <el-card class="box-card">
-                            <div slot="header">
-                                <router-link :to="items[6].uri">{{items[6].name}}</router-link>
-                            </div>
-                            <router-link :to="items[6].uri">
-                                <img :src="items[6].image" class="style-image mx-auto d-block">
-                            </router-link>
-                        </el-card>
-                    </div>
-                    <div class="col-4">
-                        <el-card class="box-card">
-                            <div slot="header">
-                                <router-link :to="items[7].uri">{{items[7].name}}</router-link>
-                            </div>
-                            <router-link :to="items[7].uri">
-                                <img :src="items[7].image" class="style-image mx-auto d-block">
-                            </router-link>
-                        </el-card>
-                    </div>
-                    <div class="col-4">
-                        <el-card class="box-card">
-                            <div slot="header">
-                                <router-link :to="items[8].uri">{{items[8].name}}</router-link>
-                            </div>
-                            <router-link :to="items[8].uri">
-                                <img :src="items[8].image" class="style-image mx-auto d-block">
-                            </router-link>
-                        </el-card>
-                    </div>
-                    <div class="col-4"></div>
                 </div>
             </div>
         </div>
@@ -168,6 +83,7 @@
 </template>
 
 <script>
+import { debounce } from "lodash";
 export default {
     data() {
         return {
@@ -228,12 +144,30 @@ export default {
                 }
             ]
         };
+    },
+    mounted() {
+        window.addEventListener(
+            "resize",
+            debounce(this.handleResize, 100, { trailing: true })
+        );
+    },
+    beforeDestroy: function() {
+        window.removeEventListener("resize", () => {});
+    },
+    methods: {
+        handleResize() {
+            setTimeout(this.$redrawVueMasonry, 200);
+        }
     }
 };
 </script>
 
 <style lang="scss" scoped>
 @import "assets/variables.scss";
+.remove-padding {
+    padding: 0;
+}
+
 .pad-funding-note {
     border-top: 1px solid #ccc;
     margin-top: 50px;
@@ -243,29 +177,17 @@ export default {
     width: 100%;
     height: auto;
 }
+
 .style-link {
     font-size: 14px;
 }
 
-.el-carousel__item h5 {
-    color: $link-color;
-    opacity: 0.75;
-    margin: 0;
-    padding: 10px;
-    text-align: center;
+.item {
+    margin: 15px 0;
 }
-
-.el-carousel__item:nth-child(2n) {
-    background-color: $white;
-    -webkit-box-shadow: 10px 10px 20px 0px rgba(212, 212, 212, 1);
-    -moz-box-shadow: 10px 10px 20px 0px rgba(212, 212, 212, 1);
-    box-shadow: 10px 10px 20px 0px rgba(212, 212, 212, 1);
-}
-
-.el-carousel__item:nth-child(2n + 1) {
-    background-color: $white;
-    -webkit-box-shadow: 10px 10px 20px 0px rgba(212, 212, 212, 1);
-    -moz-box-shadow: 10px 10px 20px 0px rgba(212, 212, 212, 1);
-    box-shadow: 10px 10px 20px 0px rgba(212, 212, 212, 1);
+@media only screen and (min-width: 600px) {
+    .item {
+        margin: 15px;
+    }
 }
 </style>
