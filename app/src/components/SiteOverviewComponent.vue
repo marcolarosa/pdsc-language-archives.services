@@ -133,6 +133,16 @@
                             </router-link>
                         </el-card>
                     </div>
+                    <div class="col-4">
+                        <el-card class="box-card">
+                            <div slot="header">
+                                <router-link :to="items[8].uri">{{items[8].name}}</router-link>
+                            </div>
+                            <router-link :to="items[8].uri">
+                                <img :src="items[8].image" class="style-image mx-auto d-block">
+                            </router-link>
+                        </el-card>
+                    </div>
                     <div class="col-4"></div>
                 </div>
             </div>
