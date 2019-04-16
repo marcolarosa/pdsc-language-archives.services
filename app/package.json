@@ -10,9 +10,23 @@
     },
     "author": "Marco La Rosa",
     "license": "ISC",
+    "dependencies": {
+        "apexcharts": "^2.6.0",
+        "axios": "^0.18.0",
+        "@babel/polyfill": "^7.4.3",
+        "bootstrap": "^4.3.1",
+        "date-fns": "^1.30.1",
+        "element-ui": "^2.7.2",
+        "mapbox-gl": "^0.50.0",
+        "moment": "^2.24.0",
+        "vue": "^2.6.10",
+        "vue-masonry": "^0.11.7",
+        "vue-router": "^3.0.5",
+        "vue-scrollto": "^2.15.0",
+        "vuex": "^3.1.0"
+    },
     "devDependencies": {
         "@babel/core": "^7.4.3",
-        "@babel/plugin-proposal-object-rest-spread": "^7.4.3",
         "@babel/plugin-syntax-dynamic-import": "^7.2.0",
         "@babel/preset-env": "^7.4.3",
         "babel-loader": "^8.0.5",
@@ -35,20 +49,5 @@
         "webpack": "4.28.4",
         "webpack-cli": "^3.3.0",
         "webpack-dev-server": "^3.3.1"
-    },
-    "dependencies": {
-        "apexcharts": "^2.6.0",
-        "axios": "^0.18.0",
-        "babel-polyfill": "^6.26.0",
-        "bootstrap": "^4.3.1",
-        "date-fns": "^1.30.1",
-        "element-ui": "^2.7.2",
-        "mapbox-gl": "^0.50.0",
-        "moment": "^2.24.0",
-        "vue": "^2.6.10",
-        "vue-masonry": "^0.11.7",
-        "vue-router": "^3.0.5",
-        "vue-scrollto": "^2.15.0",
-        "vuex": "^3.1.0"
     }
 }
