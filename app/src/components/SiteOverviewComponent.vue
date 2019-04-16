@@ -141,6 +141,12 @@ export default {
                     name: "Raspberry Pi as a Repatriation Device",
                     image: "assets/images/raspberrypi-ar21.svg",
                     uri: "/about/pi"
+                },
+                {
+                    id: 9,
+                    name: "50 Words",
+                    image: "",
+                    uri: "/about/50words"
                 }
             ]
         };

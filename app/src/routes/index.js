@@ -28,6 +28,8 @@ const WordgenDescriptionComponent = () =>
     import(/* webpackChunkName: "group-apps" */ "components/about/WordgenDescriptionComponent.vue");
 const RaspberryPiDescriptionComponent = () =>
     import(/* webpackChunkName: "group-apps" */ "components/about/RaspberryPiDescriptionComponent.vue");
+const FiftyWordsDescriptionComponent = () =>
+    import(/* webpackChunkName: "group-apps" */ "components/about/50WordsDescriptionComponent.vue");
 
 const ExplorerComponent = () =>
     import(/* webpackChunkName: "group-explore" */ "components/olac-explorer/ExplorerComponent.vue");
@@ -72,6 +74,10 @@ export const router = new VueRouter({
                 {
                     path: "/about/pi",
                     component: RaspberryPiDescriptionComponent
+                },
+                {
+                    path: "/about/50words",
+                    component: FiftyWordsDescriptionComponent
                 }
             ]
         },
