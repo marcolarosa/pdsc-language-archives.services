@@ -1,5 +1,5 @@
 <template>
-    <el-card class="box-card style-card" shadow="never" ref="top">
+    <div class="px-5" ref="top">
         <div slot="header" class="clearfix">
             <h4>
                 Setting up a
@@ -83,7 +83,7 @@
                 >the data loader documentation for more information.</router-link>
             </p>
         </div>
-    </el-card>
+    </div>
 </template>
 
 <script>
@@ -100,10 +100,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.style-card {
-    border: unset;
-}
-
 .style-text {
     font-size: 1em;
 }
