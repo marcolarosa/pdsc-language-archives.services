@@ -127,7 +127,7 @@ export default {
                 {
                     id: 6,
                     name: "Data Loader",
-                    image: "assets/images/dataloader.jpg",
+                    image: "assets/images/dataloader.new.png",
                     uri: "/about/data-loader"
                 },
                 {
