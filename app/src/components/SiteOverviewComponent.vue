@@ -103,7 +103,7 @@ export default {
                 {
                     id: 2,
                     name: "Nabu Collection Mobile Viewer",
-                    image: "assets/images/mobile-viewer1.jpg",
+                    image: "assets/images/mobile-viewer1.png",
                     uri: "/about/mobile-viewer"
                 },
                 {
