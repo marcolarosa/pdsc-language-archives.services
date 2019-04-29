@@ -3,7 +3,7 @@
         <div slot="header" class="clearfix">
             <h4>50 Words</h4>
         </div>
-        <p>A blurb?</p>
+        <p>More to come...</p>
         <p>
             - Use the application @
             <a

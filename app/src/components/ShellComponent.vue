@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div ref="top">
         <site-header-component></site-header-component>
         <router-view></router-view>
     </div>
@@ -7,6 +7,7 @@
 
 <script>
 import SiteHeaderComponent from "./SiteHeaderComponent.vue";
+import VueScrollTo from "vue-scrollto";
 
 export default {
     data() {
@@ -14,6 +15,11 @@ export default {
     },
     components: {
         SiteHeaderComponent
+    },
+    watch: {
+        $route: function() {
+            VueScrollTo.scrollTo(this.$refs["top"], 100, {});
+        }
     }
 };
 </script>

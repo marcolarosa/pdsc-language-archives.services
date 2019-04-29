@@ -16,20 +16,25 @@
             >https://github.com/marcolarosa/pdsc-collection-viewer</a>
         </p>
         <div class="outer">
-            <img src="assets/images/viewer.jpg" class="style-image position-image1">
-            <img src="assets/images/viewer1.jpg" class="style-image position-image2">
-            <img src="assets/images/viewer2.jpg" class="style-image position-image3">
+            <el-carousel type="card">
+                <el-carousel-item v-for="(image, idx) in images" :key="idx">
+                    <el-image :src="image" fit="fill"/>
+                </el-carousel-item>
+            </el-carousel>
         </div>
     </div>
 </template>
 
 <script>
-import SiteHeaderComponent from "src/components/SiteHeaderComponent.vue";
-import NabuDescriptionComponent from "./NabuDescriptionComponent.vue";
-
 export default {
-    components: {
-        NabuDescriptionComponent
+    data() {
+        return {
+            images: [
+                "assets/images/viewer.jpg",
+                "assets/images/viewer1.jpg",
+                "assets/images/viewer2.jpg"
+            ]
+        };
     }
 };
 </script>

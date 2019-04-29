@@ -31,9 +31,11 @@
             >https://github.com/marcolarosa/pdsc-olac-visualisation</a>
         </p>
         <div class="outer">
-            <img src="assets/images/olacvis.jpg" class="style-image position-image1">
-            <img src="assets/images/olacvis1.jpg" class="style-image position-image2">
-            <img src="assets/images/olacvis2.jpg" class="style-image position-image3">
+            <el-carousel type="card">
+                <el-carousel-item v-for="(image, idx) in images" :key="idx">
+                    <el-image :src="image" fit="fill"/>
+                </el-carousel-item>
+            </el-carousel>
         </div>
     </div>
 </template>
@@ -43,8 +45,14 @@ import SiteHeaderComponent from "src/components/SiteHeaderComponent.vue";
 import NabuDescriptionComponent from "./NabuDescriptionComponent.vue";
 
 export default {
-    components: {
-        NabuDescriptionComponent
+    data() {
+        return {
+            images: [
+                "assets/images/olacvis.jpg",
+                "assets/images/olacvis1.jpg",
+                "assets/images/olacvis2.jpg"
+            ]
+        };
     }
 };
 </script>

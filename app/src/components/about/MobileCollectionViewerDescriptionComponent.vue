@@ -31,16 +31,27 @@
             >https://github.com/marcolarosa/pdsc-collection-viewer-v2</a>
         </p>
         <div class="outer">
-            <img src="assets/images/mobile-viewer1.jpg" class="style-image position-image1">
-            <img src="assets/images/mobile-viewer2.jpg" class="style-image position-image2">
+            <el-carousel type="card">
+                <el-carousel-item v-for="(image, idx) in images" :key="idx">
+                    <el-image :src="image" fit="fill"/>
+                </el-carousel-item>
+            </el-carousel>
         </div>
     </div>
 </template>
 
 <script>
-import SiteHeaderComponent from "src/components/SiteHeaderComponent.vue";
-
-export default {};
+export default {
+    data() {
+        return {
+            images: [
+                "assets/images/mobile-viewer1.png",
+                "assets/images/mobile-viewer2.png",
+                "assets/images/mobile-viewer3.png"
+            ]
+        };
+    }
+};
 </script>
 
 <style lang="scss" scoped>

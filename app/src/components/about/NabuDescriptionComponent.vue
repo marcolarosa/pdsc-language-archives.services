@@ -22,14 +22,27 @@
             >https://github.com/nabu-catalog/nabu</a>
         </p>
         <div class="outer">
-            <img src="assets/images/nabu.jpg" class="style-image position-image1">
-            <img src="assets/images/nabu1.jpg" class="style-image position-image2">
-            <img src="assets/images/nabu2.jpg" class="style-image position-image3">
+            <el-carousel type="card">
+                <el-carousel-item v-for="(image, idx) in images" :key="idx">
+                    <el-image :src="image" fit="fill"/>
+                </el-carousel-item>
+            </el-carousel>
         </div>
     </div>
 </template>
 
 <script>
+export default {
+    data() {
+        return {
+            images: [
+                "assets/images/nabu.jpg",
+                "assets/images/nabu1.jpg",
+                "assets/images/nabu2.jpg"
+            ]
+        };
+    }
+};
 </script>
 
 <style lang="scss" scoped>

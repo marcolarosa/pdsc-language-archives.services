@@ -27,7 +27,7 @@
             >https://github.com/marcolarosa/pdsc-olac-datasource</a>
         </p>
         <div class="outer">
-            <img src="assets/images/olacdata.jpg" class="style-image position-image1">
+            <el-image src="assets/images/olacdata.jpg" fit="fill"/>
         </div>
     </div>
 </template>

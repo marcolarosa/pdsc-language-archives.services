@@ -37,7 +37,8 @@
             >https://github.com/marcolarosa/pdsc-librarybox-installer</a>
         </p>
         <div class="outer">
-            <img src="assets/images/dataloader.new.png" class="style-image position-image1">
+            <el-image src="assets/images/dataloader.new.png" fit="fill"></el-image>
+            <!-- <img src="assets/images/dataloader.new.png" class="style-image"> -->
         </div>
     </div>
 </template>

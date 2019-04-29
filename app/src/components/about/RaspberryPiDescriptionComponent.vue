@@ -1,5 +1,5 @@
 <template>
-    <div class="px-5" ref="top">
+    <div class="px-5">
         <div slot="header" class="clearfix">
             <h4>
                 Setting up a
@@ -87,14 +87,9 @@
 </template>
 
 <script>
-import VueScrollTo from "vue-scrollto";
-
 export default {
     data() {
         return {};
-    },
-    mounted() {
-        VueScrollTo.scrollTo(this.$refs["top"], 100, {});
     }
 };
 </script>
