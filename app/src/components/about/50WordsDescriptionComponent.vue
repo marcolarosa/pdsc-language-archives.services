@@ -3,13 +3,18 @@
         <div slot="header" class="clearfix">
             <h4>50 Words</h4>
         </div>
-        <p>More to come...</p>
+        <p>
+            This project aims to provide resources for
+            schools to teach at least fifty words in their local language.
+            Australian Indigenous languages have many thousands of words but
+            we are displaying just some on this site, with audio or video.
+        </p>
         <p>
             - Use the application @
             <a
-                href="http://language-archives.services/50words/"
+                href="http://50words.online"
                 target="_blank"
-            >http://language-archives.services/50words/</a>
+            >http://50words.online</a>
             <br>- The source code is accessible @
             <a
                 href="https://github.com/marcolarosa/pdsc-50-words"
@@ -17,8 +22,11 @@
             >https://github.com/marcolarosa/pdsc-50-words</a>
         </p>
         <div class="outer">
-            <!-- <img src="assets/images/mobile-viewer1.jpg" class="style-image position-image1">
-            <img src="assets/images/mobile-viewer2.jpg" class="style-image position-image2">-->
+            <el-carousel type="card">
+                <el-carousel-item v-for="(image, idx) in images" :key="idx">
+                    <el-image :src="image" fit="fill"/>
+                </el-carousel-item>
+            </el-carousel>
         </div>
     </div>
 </template>
@@ -26,7 +34,17 @@
 <script>
 import SiteHeaderComponent from "src/components/SiteHeaderComponent.vue";
 
-export default {};
+export default {
+    data() {
+        return {
+            images: [
+                "assets/images/50words.png",
+                "assets/images/50words1.png",
+                "assets/images/50words2.png"
+            ]
+        };
+    }
+};
 </script>
 
 <style lang="scss" scoped>

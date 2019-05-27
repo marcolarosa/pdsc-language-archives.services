@@ -145,7 +145,7 @@ export default {
                 {
                     id: 9,
                     name: "50 Words",
-                    image: "",
+                    image: "assets/images/50words.png",
                     uri: "/about/50words"
                 }
             ]
