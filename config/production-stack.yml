@@ -20,7 +20,7 @@ services:
         ports:
             - "80:80"
         volumes:
-            - /srv/website:/var/www/language-archives.service
+            - /srv/website:/var/www/language-archives.services
             - /srv/olacvis:/var/www/olacvis
             - /srv/downloads:/var/www/downloads
             - /srv/mobile-viewer:/var/www/mobile-viewer
