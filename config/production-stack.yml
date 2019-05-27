@@ -20,12 +20,12 @@ services:
         ports:
             - "80:80"
         volumes:
-            - /srv/website:/var/www/html
+            - /srv/website:/var/www/language-archives.service
             - /srv/olacvis:/var/www/olacvis
             - /srv/downloads:/var/www/downloads
             - /srv/mobile-viewer:/var/www/mobile-viewer
-            - /srv/50words:/var/www/50words
-            - /srv/repository:/var/www/repository
+            - /srv/50words:/var/www/50words.online
+            # - /srv/repository:/var/www/repository
         networks:
             - pdscnet
 
