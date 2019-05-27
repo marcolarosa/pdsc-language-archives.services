@@ -27,7 +27,7 @@
         <p>
             - Download the MacOS version of the application from
             <a
-                href="http://www.language-archives.services/downloads/paradisec-data-loader.zip"
+                href="http://language-archives.services/downloads/paradisec-data-loader.zip"
                 target="_blank"
             >here</a>
             <br>- The source code is accessible @
