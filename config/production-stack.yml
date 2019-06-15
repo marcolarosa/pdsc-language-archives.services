@@ -25,6 +25,7 @@ services:
             - /srv/downloads:/var/www/downloads
             - /srv/mobile-viewer:/var/www/mobile-viewer
             - /srv/50words:/var/www/50words.online
+            - /srv/elan-lint:/var/www/elan-lint
             # - /srv/repository:/var/www/repository
         networks:
             - pdscnet
