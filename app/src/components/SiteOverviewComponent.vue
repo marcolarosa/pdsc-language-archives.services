@@ -147,6 +147,12 @@ export default {
                     name: "50 Words",
                     image: "assets/images/50words.png",
                     uri: "/about/50words"
+                },
+                {
+                    id: 10,
+                    name: "ELAN Lint",
+                    image: "assets/images/elanLint.png",
+                    uri: "/about/elan-lint"
                 }
             ]
         };

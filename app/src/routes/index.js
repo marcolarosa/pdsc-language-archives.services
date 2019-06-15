@@ -5,40 +5,76 @@ import VueRouter from "vue-router";
 Vue.use(VueRouter);
 
 const ShellComponent = () =>
-    import(/* webpackChunkName: "group-shell" */ "components/ShellComponent.vue");
+    import(
+        /* webpackChunkName: "group-shell" */ "components/ShellComponent.vue"
+    );
 
 const BadRequestComponent = () =>
-    import(/* webpackChunkName: "group-shell" */ "components/BadRequestComponent.vue");
+    import(
+        /* webpackChunkName: "group-shell" */ "components/BadRequestComponent.vue"
+    );
 const SiteOverviewComponent = () =>
-    import(/* webpackChunkName: "group-shell" */ "components/SiteOverviewComponent.vue");
+    import(
+        /* webpackChunkName: "group-shell" */ "components/SiteOverviewComponent.vue"
+    );
 
 const NabuDescriptionComponent = () =>
-    import(/* webpackChunkName: "group-apps" */ "components/about/NabuDescriptionComponent.vue");
+    import(
+        /* webpackChunkName: "group-apps" */ "components/about/NabuDescriptionComponent.vue"
+    );
 const NabuCollectionViewerDescriptionComponent = () =>
-    import(/* webpackChunkName: "group-apps" */ "components/about/NabuCollectionViewerDescriptionComponent.vue");
+    import(
+        /* webpackChunkName: "group-apps" */ "components/about/NabuCollectionViewerDescriptionComponent.vue"
+    );
 const MobileCollectionViewerDescriptionComponent = () =>
-    import(/* webpackChunkName: "group-apps" */ "components/about/MobileCollectionViewerDescriptionComponent.vue");
+    import(
+        /* webpackChunkName: "group-apps" */ "components/about/MobileCollectionViewerDescriptionComponent.vue"
+    );
 const AngularOlacVisComponent = () =>
-    import(/* webpackChunkName: "group-apps" */ "components/about/AngularOlacVisComponent.vue");
+    import(
+        /* webpackChunkName: "group-apps" */ "components/about/AngularOlacVisComponent.vue"
+    );
 const DataLoaderDescriptionComponent = () =>
-    import(/* webpackChunkName: "group-apps" */ "components/about/DataLoaderDescriptionComponent.vue");
+    import(
+        /* webpackChunkName: "group-apps" */ "components/about/DataLoaderDescriptionComponent.vue"
+    );
 const DataServiceDescriptionComponent = () =>
-    import(/* webpackChunkName: "group-apps" */ "components/about/DataServiceDescriptionComponent.vue");
+    import(
+        /* webpackChunkName: "group-apps" */ "components/about/DataServiceDescriptionComponent.vue"
+    );
 const WordgenDescriptionComponent = () =>
-    import(/* webpackChunkName: "group-apps" */ "components/about/WordgenDescriptionComponent.vue");
+    import(
+        /* webpackChunkName: "group-apps" */ "components/about/WordgenDescriptionComponent.vue"
+    );
 const RaspberryPiDescriptionComponent = () =>
-    import(/* webpackChunkName: "group-apps" */ "components/about/RaspberryPiDescriptionComponent.vue");
+    import(
+        /* webpackChunkName: "group-apps" */ "components/about/RaspberryPiDescriptionComponent.vue"
+    );
 const FiftyWordsDescriptionComponent = () =>
-    import(/* webpackChunkName: "group-apps" */ "components/about/50WordsDescriptionComponent.vue");
+    import(
+        /* webpackChunkName: "group-apps" */ "components/about/50WordsDescriptionComponent.vue"
+    );
+const ElanLintDescriptionComponent = () =>
+    import(
+        /* webpackChunkName: "group-apps" */ "components/about/ElanLintDescriptionComponent.vue"
+    );
 
 const ExplorerComponent = () =>
-    import(/* webpackChunkName: "group-explore" */ "components/olac-explorer/ExplorerComponent.vue");
+    import(
+        /* webpackChunkName: "group-explore" */ "components/olac-explorer/ExplorerComponent.vue"
+    );
 const ExplorerBrowseCountryComponent = () =>
-    import(/* webpackChunkName: "group-explore" */ "components/olac-explorer/BrowseCountry/BrowseCountryComponent.vue");
+    import(
+        /* webpackChunkName: "group-explore" */ "components/olac-explorer/BrowseCountry/BrowseCountryComponent.vue"
+    );
 const ExplorerBrowseLanguageComponent = () =>
-    import(/* webpackChunkName: "group-explore" */ "components/olac-explorer/BrowseLanguage/BrowseLanguageComponent.vue");
+    import(
+        /* webpackChunkName: "group-explore" */ "components/olac-explorer/BrowseLanguage/BrowseLanguageComponent.vue"
+    );
 const ExplorerLanguageVisualisationComponent = () =>
-    import(/* webpackChunkName: "group-explore" */ "components/olac-explorer/ExploreCountry/LanguageVisualisationComponent.vue");
+    import(
+        /* webpackChunkName: "group-explore" */ "components/olac-explorer/ExploreCountry/LanguageVisualisationComponent.vue"
+    );
 
 export const router = new VueRouter({
     mode: "history",
@@ -78,6 +114,10 @@ export const router = new VueRouter({
                 {
                     path: "/about/50words",
                     component: FiftyWordsDescriptionComponent
+                },
+                {
+                    path: "/about/elan-lint",
+                    component: ElanLintDescriptionComponent
                 }
             ]
         },
