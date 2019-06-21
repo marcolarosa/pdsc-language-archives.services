@@ -7,14 +7,14 @@
         <p>
             - Use the application @
             <a
-                href="http://language-archives.services/elan-lint/"
+                href="http://language-archives.services/eaf-viewer/"
                 target="_blank"
-            >http://language-archives.services/elan-lint/</a>
+            >http://language-archives.services/eaf-viewer/</a>
             <br>- The source code is accessible @
             <a
-                href="https://github.com/marcolarosa/pdsc-elan-linter"
+                href="https://github.com/marcolarosa/pdsc-eaf-viewer"
                 target="_blank"
-            >https://github.com/marcolarosa/pdsc-elan-linter</a>
+            >https://github.com/marcolarosa/pdsc-eaf-viewer</a>
         </p>
         <div class="outer">
             <el-carousel type="card">
@@ -32,7 +32,7 @@ import SiteHeaderComponent from "src/components/SiteHeaderComponent.vue";
 export default {
     data() {
         return {
-            images: ["assets/images/elanLint.png"]
+            images: ["assets/images/eafViewer.png"]
         };
     }
 };

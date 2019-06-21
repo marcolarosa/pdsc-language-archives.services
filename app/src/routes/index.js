@@ -54,9 +54,9 @@ const FiftyWordsDescriptionComponent = () =>
     import(
         /* webpackChunkName: "group-apps" */ "components/about/50WordsDescriptionComponent.vue"
     );
-const ElanLintDescriptionComponent = () =>
+const EafViewerDescriptionComponent = () =>
     import(
-        /* webpackChunkName: "group-apps" */ "components/about/ElanLintDescriptionComponent.vue"
+        /* webpackChunkName: "group-apps" */ "components/about/EafViewerDescriptionComponent.vue"
     );
 
 const ExplorerComponent = () =>
@@ -116,8 +116,8 @@ export const router = new VueRouter({
                     component: FiftyWordsDescriptionComponent
                 },
                 {
-                    path: "/about/elan-lint",
-                    component: ElanLintDescriptionComponent
+                    path: "/about/eaf-viewer",
+                    component: EafViewerDescriptionComponent
                 }
             ]
         },

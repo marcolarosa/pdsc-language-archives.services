@@ -150,9 +150,9 @@ export default {
                 },
                 {
                     id: 10,
-                    name: "ELAN Lint",
-                    image: "assets/images/elanLint.png",
-                    uri: "/about/elan-lint"
+                    name: "EAF Viewer",
+                    image: "assets/images/eafViewer.png",
+                    uri: "/about/eaf-viewer"
                 }
             ]
         };
