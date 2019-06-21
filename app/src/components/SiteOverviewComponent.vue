@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="row">
-            <div class="col">
+            <div class="col style-text">
                 <p>
                     The Centre of Excellence for the Dynamics of Language is focussed on investigating
                     how languages
@@ -196,14 +196,7 @@ export default {
     font-size: 14px;
 }
 
-.style-tile-title {
-    // white-space: nowrap;
-    // overflow: hidden;
-    // text-overflow: ellipsis;
-}
-
 .style-card {
-    // box-shadow: unset;
     border: 2px solid #ccc;
     border-radius: 4px;
 }
@@ -231,6 +224,10 @@ export default {
         min-width: calc((100vw / 2) - 130px);
         max-width: calc((100vw / 2) - 130px);
     }
+    .style-text {
+        font-size: 1.2em;
+        letter-spacing: 1px;
+    }
 }
 @media only screen and (min-width: 1600px) {
     .style-tile {
@@ -239,7 +236,7 @@ export default {
         padding: 0 50px;
     }
     .style-tile-header {
-        font-size: 1.3em;
+        // font-size: 1.1em;
     }
 }
 </style>

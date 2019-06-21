@@ -26,9 +26,13 @@ export default {
 }
 
 .style-heading {
-    line-height: 100px;
-    font-size: 3.5em;
+    line-height: 80px;
+    font-size: 2.5em;
     margin-left: 20px;
+}
+.style-logo {
+    min-width: 100%;
+    max-width: 100%;
 }
 @media only screen and (min-width: 768px) {
     .pad-header {
@@ -37,30 +41,21 @@ export default {
         border-bottom: 1px solid #ccc;
     }
     .style-heading {
-        line-height: 70px;
-        font-size: 3em;
+        line-height: 90px;
+        font-size: 2.5em;
         margin-left: 20px;
     }
+    .style-logo {
+        min-width: 400px;
+        max-width: 400px;
+    }
 }
-@media only screen and (min-width: 1024px) {
+@media screen and (min-width: 1024px) {
     .style-heading {
-        line-height: 100px;
+        line-height: 105px;
         font-size: 3.5em;
         margin-left: 20px;
     }
-}
-
-.style-logo {
-    min-width: 100%;
-    max-width: 100%;
-}
-@media only screen and (min-width: 600px) {
-    .style-logo {
-        min-width: 350px;
-        max-width: 350px;
-    }
-}
-@media only screen and (min-width: 900px) {
     .style-logo {
         min-width: 500px;
         max-width: 500px;
