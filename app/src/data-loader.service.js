@@ -7,17 +7,17 @@ export default class ExplorerService {
 
     async getDates() {
         let uri = `/dates`;
-        return (await http.get(uri)).data.dates;
+        return (await this.get(uri)).dates;
     }
 
     async getRegions() {
         let uri = `/regions`;
-        return (await http.get(uri)).data.regions;
+        return (await this.get(uri)).regions;
     }
 
     async getCountries() {
         let uri = `/countries`;
-        return (await http.get(uri)).data.countries;
+        return (await this.get(uri)).countries;
     }
 
     async getLanguages(date) {
@@ -27,7 +27,7 @@ export default class ExplorerService {
         } else {
             uri = `/languages?date=${date}`;
         }
-        return (await http.get(uri)).data.languages;
+        return (await this.get(uri)).languages;
     }
 
     async getCountryData({ country, date }) {
@@ -37,13 +37,13 @@ export default class ExplorerService {
         } else {
             uri = `/countries/${country}/stats?date=${date}`;
         }
-        return (await http.get(uri)).data;
+        return await this.get(uri);
     }
 
     async getLanguageData({ code, date }) {
         let uri = `/languages/${code}?date=${date}`;
         try {
-            let data = (await http.get(uri)).data;
+            let data = await this.get(uri);
             return data.language.harvests[0].metadata;
         } catch (error) {
             return {};
@@ -53,10 +53,20 @@ export default class ExplorerService {
     async getLanguageResources({ code, date }) {
         let uri = `/languages/${code}/resources?date=${date}`;
         try {
-            let data = (await http.get(uri)).data;
+            let data = await this.get(uri);
             return data.language.resources;
         } catch (error) {
             return {};
         }
+    }
+
+    async get(uri) {
+        let response = await fetch(
+            `http://language-archives.services/api${uri}`
+        );
+        if (response.status !== 200) {
+            throw new Error(response);
+        }
+        return await response.json();
     }
 }
