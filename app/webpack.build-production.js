@@ -6,6 +6,7 @@ const CleanWebpackPlugin = require("clean-webpack-plugin");
 const VueLoaderPlugin = require("vue-loader/lib/plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const ImageminPlugin = require("imagemin-webpack-plugin").default;
 
 module.exports = {
     target: "web",
@@ -47,7 +48,13 @@ module.exports = {
                 }
             ],
             {}
-        )
+        ),
+        new ImageminPlugin({
+            test: /\.(jpe?g|png|gif|svg)$/i,
+            pngquant: {
+                quality: "95-100"
+            }
+        })
     ],
     module: {
         rules: [
