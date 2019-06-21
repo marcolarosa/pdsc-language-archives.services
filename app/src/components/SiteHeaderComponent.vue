@@ -20,8 +20,8 @@ export default {
 
 <style lang="scss" scoped>
 .pad-header {
-    margin: 50px 0px;
-    padding: 20px 0px;
+    margin: 10px 0px;
+    padding: 10px 0px;
     border-bottom: 1px solid #ccc;
 }
 
@@ -30,14 +30,19 @@ export default {
     font-size: 3.5em;
     margin-left: 20px;
 }
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 768px) {
+    .pad-header {
+        margin: 20px 0px;
+        padding: 20px 0px;
+        border-bottom: 1px solid #ccc;
+    }
     .style-heading {
         line-height: 70px;
         font-size: 3em;
         margin-left: 20px;
     }
 }
-@media only screen and (min-width: 900px) {
+@media only screen and (min-width: 1024px) {
     .style-heading {
         line-height: 100px;
         font-size: 3.5em;

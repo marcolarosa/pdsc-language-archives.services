@@ -1,5 +1,5 @@
 <template>
-    <div ref="top" class="px-5">
+    <div ref="top" class="px-lg-5">
         <site-header-component></site-header-component>
         <router-view></router-view>
     </div>

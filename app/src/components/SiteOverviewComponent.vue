@@ -75,7 +75,7 @@
                                 target="_blank"
                             >Nick Thieberger</a> and
                             have been funded as part of the
-                            <br>ARC Centre of Excellence for the Dynamics of Language (ARC grant CE140100041).
+                            ARC Centre of Excellence for the Dynamics of Language (ARC grant CE140100041).
                         </strong>
                     </em>
                 </p>
@@ -197,15 +197,15 @@ export default {
 }
 
 .style-tile-title {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    // white-space: nowrap;
+    // overflow: hidden;
+    // text-overflow: ellipsis;
 }
 
 .style-card {
     // box-shadow: unset;
     border: 2px solid #ccc;
-    border-radius: 2px;
+    border-radius: 4px;
 }
 
 .style-image {
@@ -216,11 +216,19 @@ export default {
 }
 
 .style-tile {
+    min-width: calc(100vw 100px);
     max-width: calc(100vw 100px);
     margin: 15px;
 }
 @media only screen and (min-width: 768px) {
     .style-tile {
+        min-width: calc((100vw / 2) - 80px);
+        max-width: calc((100vw / 2) - 80px);
+    }
+}
+@media only screen and (min-width: 1024px) {
+    .style-tile {
+        min-width: calc((100vw / 2) - 130px);
         max-width: calc((100vw / 2) - 130px);
     }
 }
