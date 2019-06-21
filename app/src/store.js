@@ -1,8 +1,14 @@
-import ExplorerService from "services/explorer.service";
-const explorerService = new ExplorerService();
+"use strict";
+
+import Vue from "vue";
+import Vuex from "vuex";
+Vue.use(Vuex);
+
+import DataLoaderService from "./data-loader.service";
+const ds = new DataLoaderService();
 import { round, groupBy, uniqBy } from "lodash";
 
-export const explorerStoreModule = {
+const explorerStoreModule = {
     namespaced: true,
     state: {
         dates: [],
@@ -97,22 +103,22 @@ export const explorerStoreModule = {
     actions: {
         async preload({ commit }) {
             commit("savePreloadMessage", "loading harvest dates...");
-            const dates = await explorerService.getDates();
+            const dates = await ds.getDates();
             commit("saveDates", dates);
             await sleep(800);
 
             commit("savePreloadMessage", "loading regions...");
-            const regions = await explorerService.getRegions();
+            const regions = await ds.getRegions();
             commit("saveRegions", regions);
             await sleep(800);
 
             commit("savePreloadMessage", "loading countries...");
-            const countries = await explorerService.getCountries();
+            const countries = await ds.getCountries();
             commit("saveCountries", countries);
             await sleep(800);
 
             commit("savePreloadMessage", "loading languages...");
-            const languages = await explorerService.getLanguages();
+            const languages = await ds.getLanguages();
             commit("saveLanguages", languages);
             await sleep(800);
 
@@ -123,7 +129,7 @@ export const explorerStoreModule = {
             const languagesGroupedByCode = state.languagesGroupedByCode;
 
             commit("saveLoadingPercentage", 1);
-            const data = await explorerService.getCountryData({
+            const data = await ds.getCountryData({
                 country: state.browseByCountry.country,
                 date: state.browseByCountry.date
             });
@@ -140,7 +146,7 @@ export const explorerStoreModule = {
                     languagesGroupedByCode[language.code][0].date !==
                         state.browseByCountry.date
                 ) {
-                    let metadata = await explorerService.getLanguageData({
+                    let metadata = await ds.getLanguageData({
                         code: language.code,
                         date: state.browseByCountry.date
                     });
@@ -171,14 +177,14 @@ export const explorerStoreModule = {
                 metadata = {};
                 resources = {};
                 try {
-                    metadata = await explorerService.getLanguageData({
+                    metadata = await ds.getLanguageData({
                         code: state.browseByLanguage.code,
                         date: date
                     });
                 } catch (error) {}
 
                 try {
-                    resources = await explorerService.getLanguageResources({
+                    resources = await ds.getLanguageResources({
                         code: state.browseByLanguage.code,
                         date: date
                     });
@@ -191,6 +197,18 @@ export const explorerStoreModule = {
         }
     }
 };
+
+const configuration = {
+    strict: process.env.NODE_ENV !== "production",
+    state: {
+        asideWidth: "200px"
+    },
+    mutations: {},
+    modules: {
+        explorerStore: explorerStoreModule
+    }
+};
+export const store = new Vuex.Store(configuration);
 
 function sleep(time) {
     return new Promise((resolve, reject) => {

@@ -1,7 +1,5 @@
 "use strict";
 
-import { http } from "./http.service";
-
 export default class ExplorerService {
     constructor() {}
 
