@@ -1,5 +1,5 @@
 <template>
-    <div class="remove-padding">
+    <div>
         <div class="row">
             <div class="col">
                 <p>
@@ -48,16 +48,18 @@
                     >GNU/GPL General Public License</a>
                 </p>
 
-                <div v-masonry transition-duration="0s" item-selector=".item">
-                    <div v-masonry-tile class="item" v-for="(item, idx) in items" :key="idx">
-                        <el-card class="style-tile">
-                            <div slot="header">
-                                <router-link :to="item.uri">{{item.name}}</router-link>
-                            </div>
-                            <router-link :to="item.uri">
-                                <img :src="item.image" class="style-image mx-auto d-block">
-                            </router-link>
-                        </el-card>
+                <div class="text-center px-auto">
+                    <div v-masonry transition-duration="0s" item-selector=".item">
+                        <div v-masonry-tile class="item" v-for="(item, idx) in items" :key="idx">
+                            <el-card class="style-card style-tile">
+                                <div slot="header" class="style-tile-header style-tile-title">
+                                    <router-link :to="item.uri">{{item.name}}</router-link>
+                                </div>
+                                <router-link :to="item.uri">
+                                    <img :src="item.image" class="style-image mx-auto d-block">
+                                </router-link>
+                            </el-card>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -194,12 +196,42 @@ export default {
     font-size: 14px;
 }
 
-.item {
-    margin: 15px 0;
+.style-tile-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
-@media only screen and (min-width: 600px) {
-    .item {
-        margin: 15px;
+
+.style-card {
+    // box-shadow: unset;
+    border: 2px solid #ccc;
+    border-radius: 2px;
+}
+
+.style-image {
+    margin: 20px 2%;
+    // -webkit-box-shadow: 10px 10px 20px 0px rgba(212, 212, 212, 1);
+    // -moz-box-shadow: 10px 10px 20px 0px rgba(212, 212, 212, 1);
+    // box-shadow: 10px 10px 20px 0px rgba(212, 212, 212, 1);
+}
+
+.style-tile {
+    max-width: calc(100vw 100px);
+    margin: 15px;
+}
+@media only screen and (min-width: 768px) {
+    .style-tile {
+        max-width: calc((100vw / 2) - 130px);
+    }
+}
+@media only screen and (min-width: 1600px) {
+    .style-tile {
+        min-width: calc((100vw / 3) - 100px);
+        max-width: calc((100vw / 3) - 100px);
+        padding: 0 50px;
+    }
+    .style-tile-header {
+        font-size: 1.3em;
     }
 }
 </style>
