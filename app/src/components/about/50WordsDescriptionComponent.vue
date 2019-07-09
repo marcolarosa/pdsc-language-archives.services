@@ -15,16 +15,17 @@
                 href="http://50words.online"
                 target="_blank"
             >http://50words.online</a>
-            <br>- The source code is accessible @
+            <br />- The source code is accessible @
             <a
                 href="https://github.com/marcolarosa/pdsc-50-words"
                 target="_blank"
             >https://github.com/marcolarosa/pdsc-50-words</a>
         </p>
         <div class="outer">
-            <el-carousel type="card">
+            <el-carousel type="card" height="500px">
+                >
                 <el-carousel-item v-for="(image, idx) in images" :key="idx">
-                    <el-image :src="image" fit="fill"/>
+                    <el-image :src="image" fit="contain" />
                 </el-carousel-item>
             </el-carousel>
         </div>

@@ -24,16 +24,16 @@
                 href="http://language-archives.services/mobile-viewer/"
                 target="_blank"
             >http://language-archives.services/mobile-viewer/</a>
-            <br>- The source code is accessible @
+            <br />- The source code is accessible @
             <a
                 href="https://github.com/marcolarosa/pdsc-collection-viewer-v2"
                 target="_blank"
             >https://github.com/marcolarosa/pdsc-collection-viewer-v2</a>
         </p>
         <div class="outer">
-            <el-carousel type="card">
+            <el-carousel type="card" height="500px">
                 <el-carousel-item v-for="(image, idx) in images" :key="idx">
-                    <el-image :src="image" fit="fill"/>
+                    <el-image :src="image" fit="contain" />
                 </el-carousel-item>
             </el-carousel>
         </div>
