@@ -56,7 +56,7 @@
                                     <router-link :to="item.uri">{{item.name}}</router-link>
                                 </div>
                                 <router-link :to="item.uri">
-                                    <img :src="item.image" class="style-image mx-auto d-block">
+                                    <img :src="item.image" class="style-image mx-auto d-block" />
                                 </router-link>
                             </el-card>
                         </div>
@@ -153,7 +153,7 @@ export default {
                 {
                     id: 10,
                     name: "EAF Viewer",
-                    image: "assets/images/eafViewer.png",
+                    image: "assets/images/eaf-viewer3.png",
                     uri: "/about/eaf-viewer"
                 }
             ]
