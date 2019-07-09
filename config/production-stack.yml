@@ -25,7 +25,6 @@ services:
             - /srv/downloads:/var/www/downloads
             - /srv/mobile-viewer:/var/www/mobile-viewer
             - /srv/50words:/var/www/50words.online
-            - /srv/eaf-viewer:/var/www/eaf-viewer
         networks:
             - pdscnet
 
