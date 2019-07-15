@@ -24,7 +24,6 @@ services:
             - /srv/olacvis:/var/www/olacvis
             - /srv/downloads:/var/www/downloads
             - /srv/mobile-viewer:/var/www/mobile-viewer
-            - /srv/50words:/var/www/50words.online
         networks:
             - pdscnet
 
