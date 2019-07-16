@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 if [ "$(whoami)" != 'root' ] ; then
     echo "Run me as root please. Exiting."
     exit -1
@@ -13,4 +14,73 @@ export ADMIN_PASSWORD=${ADMIN_PASSWD}
 echo "POSTGRES_PASSWORD=$POSTGRES_PASSWORD" > /root/.stack-secrets
 echo "ADMIN_PASSWORD=$ADMIN_PASSWORD" >> /root/.stack-secrets
 
-docker stack deploy -c ../config/production-stack.yml pdsc-webstack
+if ! [ -x "$(command -v docker-compose)" ]; then
+  echo 'Error: docker-compose is not installed.' >&2
+  exit 1
+fi
+
+cd ../docker
+domains=(language-archives.services www.language-archives.services)
+rsa_key_size=4096
+data_path="/srv/certbot"
+email="m@lr.id.au" # Adding a valid address is strongly recommended
+staging=0 # Set to 1 if you're testing your setup to avoid hitting request limits
+
+if [ ! -e "$data_path/conf/options-ssl-nginx.conf" ] || [ ! -e "$data_path/conf/ssl-dhparams.pem" ]; then
+  echo "### Downloading recommended TLS parameters ..."
+  mkdir -p "$data_path/conf"
+  curl -s https://raw.githubusercontent.com/certbot/certbot/master/certbot-nginx/certbot_nginx/options-ssl-nginx.conf > "$data_path/conf/options-ssl-nginx.conf"
+  curl -s https://raw.githubusercontent.com/certbot/certbot/master/certbot/ssl-dhparams.pem > "$data_path/conf/ssl-dhparams.pem"
+  echo
+fi
+
+echo "### Creating dummy certificate for $domains ..."
+path="/etc/letsencrypt/live/$domains"
+mkdir -p "$data_path/conf/live/$domains"
+docker-compose -f production-stack.yml run --rm --entrypoint "\
+  openssl req -x509 -nodes -newkey rsa:1024 -days 1\
+    -keyout '$path/privkey.pem' \
+    -out '$path/fullchain.pem' \
+    -subj '/CN=localhost'" certbot
+echo
+
+echo "### Starting stack ..."
+docker stack deploy -c production-stack.yml pdsc-webstack
+echo
+
+# Wait for services to be up and ready
+sleep 10
+
+echo "### Deleting dummy certificate for $domains ..."
+\sudo rm -rf /srv/certbot/conf/{live,renewal,archive}
+echo
+
+
+echo "### Requesting Let's Encrypt certificate for $domains ..."
+#Join $domains to -d args
+domain_args=""
+for domain in "${domains[@]}"; do
+  domain_args="$domain_args -d $domain"
+done
+
+# Select appropriate email arg
+case "$email" in
+  "") email_arg="--register-unsafely-without-email" ;;
+  *) email_arg="--email $email" ;;
+esac
+
+# Enable staging mode if needed
+if [ $staging != "0" ]; then staging_arg="--staging"; fi
+
+certbot_container_id=$(docker ps -q --filter "name=pdsc-webstack_certbot")
+docker exec -it $certbot_container_id certbot certonly --webroot -w /var/www/certbot \
+    $staging_arg \
+    $email_arg \
+    $domain_args \
+    --rsa-key-size $rsa_key_size \
+    --agree-tos \
+    --force-renewal 
+echo
+
+echo "### Reloading web services..."
+docker service update --force pdsc-webstack_web
