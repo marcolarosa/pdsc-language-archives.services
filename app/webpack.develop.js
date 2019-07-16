@@ -2,7 +2,7 @@
 
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const CleanWebpackPlugin = require("clean-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const VueLoaderPlugin = require("vue-loader/lib/plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
@@ -12,20 +12,10 @@ module.exports = {
     target: "web",
     mode: "development",
     devtool: "eval-source-map",
-    entry: ["./src/vendor.js", "babel-polyfill", "./src/index.js"],
+    entry: ["./src/vendor.js", "./src/index.js"],
     output: {
         path: path.resolve(__dirname, "dist"),
-        filename: "[name].[hash].bundle.js"
-    },
-    optimization: {
-        splitChunks: {
-            cacheGroups: {
-                vendor: {
-                    test: /node_modules/,
-                    chunks: "all"
-                }
-            }
-        }
+        filename: "[name].[contenthash].bundle.js"
     },
     devServer: {
         contentBase: path.join(__dirname, "dist"),
@@ -36,10 +26,7 @@ module.exports = {
         watchContentBase: true
     },
     plugins: [
-        new CleanWebpackPlugin(["dist/"], {
-            watch: true,
-            root: __dirname
-        }),
+        new CleanWebpackPlugin(),
         new MiniCssExtractPlugin({
             filename: "[name].[contenthash].css"
         }),
