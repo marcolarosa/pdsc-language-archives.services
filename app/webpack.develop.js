@@ -15,7 +15,7 @@ module.exports = {
     entry: ["./src/vendor.js", "./src/index.js"],
     output: {
         path: path.resolve(__dirname, "dist"),
-        filename: "[name].[contenthash].bundle.js"
+        filename: "[name].[hash].bundle.js"
     },
     devServer: {
         contentBase: path.join(__dirname, "dist"),
