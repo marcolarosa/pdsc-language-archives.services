@@ -60,7 +60,7 @@ export default class ExplorerService {
 
     async get(uri) {
         let response = await fetch(
-            `http://language-archives.services/api${uri}`
+            `https://language-archives.services/api${uri}`
         );
         if (response.status !== 200) {
             throw new Error(response);
