@@ -28,10 +28,7 @@
                 <p>
                     A key aspect of our work is the use and development of cutting edge technologies
                     to facilitate community access to primary records at the same time as
-                    curating them for research purposes. On this site we provide a
-                    visualisation of records in the world's language archives based on the Open
-                    Language Archives Community service. This gives links to what records are
-                    available for each language.
+                    curating them for research purposes.
                 </p>
                 <p>
                     To read more about what we do

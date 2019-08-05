@@ -17,18 +17,18 @@
             Empty annotations are coloured black and clicking a timeslot or tier will focus that data.
         </p>
         <p>
-            This is desktop application. Download the latest version from
+            This is a desktop application. Download the latest version from
             <a
                 href="https://github.com/marcolarosa/pdsc-eaf-viewer/releases"
                 target="_blank"
-            >https://github.com/marcolarosa/pdsc-eaf-viewer/releases</a>
+            >https://github.com/marcolarosa/pdsc-eaf-viewer/releases</a>.
         </p>
         <p>
             <br />- The source code is accessible @
             <a
                 href="https://github.com/marcolarosa/pdsc-eaf-viewer"
                 target="_blank"
-            >https://github.com/marcolarosa/pdsc-eaf-viewer</a>
+            >https://github.com/marcolarosa/pdsc-eaf-viewer</a>.
         </p>
         <div class="outer">
             <el-carousel type="card" height="500px">

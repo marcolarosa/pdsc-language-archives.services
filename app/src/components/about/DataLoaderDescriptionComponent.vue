@@ -25,16 +25,16 @@
             However, as LibraryBoxes are no longer in active development this functionality has been deprecated.
         </p>
         <p>
-            - Download the MacOS version of the application from
+            - This is a desktop application. Download the latest version from
             <a
-                href="http://language-archives.services/downloads/paradisec-data-loader.zip"
+                href="https://github.com/marcolarosa/pdsc-data-loader/releases"
                 target="_blank"
-            >here</a>
-            <br>- The source code is accessible @
+            >https://github.com/marcolarosa/pdsc-data-loader/releases</a>.
+            <br />- The source code is accessible @
             <a
-                href="https://github.com/marcolarosa/pdsc-librarybox-installer"
+                href="https://github.com/marcolarosa/pdsc-data-loader"
                 target="_blank"
-            >https://github.com/marcolarosa/pdsc-librarybox-installer</a>
+            >https://github.com/marcolarosa/pdsc-data-loader</a>.
         </p>
         <div class="outer">
             <el-image src="assets/images/dataloader.new.png" fit="fill"></el-image>
