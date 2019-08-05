@@ -35,7 +35,7 @@
                 <strong>shift</strong> key (there will be a message on screen telling you this) to get in to the
                 installation sequence. The installation menu looks like:
             </p>
-            <img src="assets/images/noobs.png" class="style-image">
+            <img src="assets/images/noobs.png" class="style-image" />
 
             <p class="style-text">
                 Select
@@ -54,7 +54,7 @@
                 After reinstalling the operating system and rebooting the device, the device IP address will be displayed a few lines
                 above the login prompt. Make a note of that.
             </p>
-            <img src="assets/images/raspberrypi-bootup.jpg" class="style-image">
+            <img src="assets/images/raspberrypi-bootup.jpg" class="style-image" />
             <p class="style-text">
                 Log in to the device as the user
                 <strong>pi</strong> and with the password
@@ -68,7 +68,7 @@
             </p>
             <ol>
                 <li>sudo bash -c 'echo "nameserver 1.1.1.1" > /etc/resolv.conf'</li>
-                <li>curl --silent --output /tmp/setup-pi.sh http://www.language-archives.services/downloads/setup-pi.sh</li>
+                <li>curl --silent --output /tmp/setup-pi.sh https://www.language-archives.services/downloads/setup-pi.sh</li>
                 <li>sudo bash /tmp/setup-pi.sh</li>
             </ol>
         </div>
