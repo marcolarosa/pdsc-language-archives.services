@@ -1,13 +1,17 @@
+> # Development of this application has moved to https://github.com/CoEDL/language-archives.services.
+>
+> ## Issues raised here will be ignored.
+
 # language-archives.services
 
 This is the base website and associated docker container code and stack configuration
 
 - [language-archives.services](#language-archivesservices)
-    - [Developing the website](#developing-the-website)
-    - [Building the website container](#building-the-website-container)
-    - [Helper scripts](#helper-scripts)
-        - [Setting up the swarm](#setting-up-the-swarm)
-        - [Updating a service](#updating-a-service)
+  - [Developing the website](#developing-the-website)
+  - [Building the website container](#building-the-website-container)
+  - [Helper scripts](#helper-scripts)
+    - [Setting up the swarm](#setting-up-the-swarm)
+    - [Updating a service](#updating-a-service)
 
 ## Developing the website
 
